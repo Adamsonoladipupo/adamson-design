@@ -111,7 +111,7 @@ function ProjectCard({ project }) {
         border border-[var(--border)]
         backdrop-blur-md
         shadow-[0_2px_16px_rgba(0,0,0,0.05)]
-        hover:shadow-[0_8px_32px_rgba(79,70,229,0.10)]
+        hover:shadow-[0_8px_32px_rgba(52,72,133,0.10)]
         hover:border-[var(--accent-hi)]
         hover:-translate-y-1
         transition-all duration-300 ease-out
@@ -191,7 +191,7 @@ export default function Projects() {
         <SectionHeading
           eyebrow="Projects"
           title="Selected work"
-          description="Case studies and live products — from early research through to shipped, production-ready experiences."
+          description="Case studies and live products, from early research through to shipped, production-ready experiences."
         />
 
         {/*

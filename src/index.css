@@ -18,9 +18,9 @@ html { scroll-behavior: smooth; }
   --border:     #D4D3E2;
   --ink:        #0D0D14;        /* near-black */
   --muted:      #5C5C7A;
-  --accent:     #4F46E5;        /* electric indigo */
-  --accent-hi:  #6366F1;        /* lighter indigo for hover borders */
-  --accent-rgb: 79, 70, 229;
+  --accent:     #344885;        /* brand blue */
+  --accent-hi:  #4A5FA8;        /* lighter brand blue for hover states */
+  --accent-rgb: 52, 72, 133;
 }
 
 /* ══════════════════════════════════════════
@@ -33,9 +33,9 @@ html { scroll-behavior: smooth; }
   --border:     #22222E;
   --ink:        #EEEEF5;
   --muted:      #9898B4;
-  --accent:     #6366F1;
-  --accent-hi:  #818CF8;
-  --accent-rgb: 99, 102, 241;
+  --accent:     #5B72BB;        /* brightened for dark-bg contrast */
+  --accent-hi:  #7A8FCC;        /* lighter brand blue on dark */
+  --accent-rgb: 91, 114, 187;
 }
 
 /* ══════════════════════════════════════════

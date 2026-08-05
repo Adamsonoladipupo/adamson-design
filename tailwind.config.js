@@ -19,10 +19,10 @@ export default {
         },
         /* ── Accent: electric indigo ─────────── */
         indigo: {
-          400: '#818CF8',
-          500: '#6366F1',
-          600: '#4F46E5',
-          700: '#4338CA',
+          400: '#7A8FCC',
+          500: '#5B72BB',
+          600: '#344885',
+          700: '#263872',
         },
         /* ── Text ────────────────────────────── */
         ink: {
@@ -49,9 +49,9 @@ export default {
       },
       boxShadow: {
         card:      '0 1px 8px 0 rgba(0,0,0,0.06), 0 4px 24px 0 rgba(0,0,0,0.04)',
-        'card-hov':'0 4px 24px 0 rgba(79,70,229,0.14)',
-        glow:      '0 0 32px 6px rgba(99,102,241,0.30)',
-        cta:       '0 4px 20px 0 rgba(79,70,229,0.45)',
+        'card-hov':'0 4px 24px 0 rgba(52,72,133,0.14)',
+        glow:      '0 0 32px 6px rgba(91,114,187,0.30)',
+        cta:       '0 4px 20px 0 rgba(52,72,133,0.45)',
       },
       keyframes: {
         marquee: {

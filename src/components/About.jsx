@@ -41,7 +41,7 @@ function StatCard({ label, target, suffix }) {
       <p
         className="font-display text-5xl font-extrabold mb-2"
         style={{
-          background: 'linear-gradient(135deg,#4F46E5,#818CF8)',
+          background: 'linear-gradient(135deg,#344885,#7A8FCC)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
@@ -59,7 +59,7 @@ function ProcessStep({ step, title, desc, icon }) {
     <div className="flex gap-4">
       <div
         className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-lg"
-        style={{ background: 'linear-gradient(135deg,rgba(79,70,229,.12),rgba(99,102,241,.08))' }}
+        style={{ background: 'linear-gradient(135deg,rgba(52,72,133,.12),rgba(91,114,187,.08))' }}
       >
         {icon}
       </div>
@@ -95,7 +95,7 @@ export default function About() {
             />
             <div className="space-y-4 text-[var(--muted)] leading-relaxed">
               <p>
-                I'm Adamson — a product designer with{' '}
+                I am Adamson, a product designer with{' '}
                 <strong className="text-[var(--ink)] font-semibold">5+ years</strong> of experience
                 crafting digital products that people genuinely enjoy using. My background spans
                 early-stage startups and established teams, where I've owned the full design
@@ -106,7 +106,7 @@ export default function About() {
                 <strong className="text-[var(--ink)] font-semibold">
                   UX strategy, interaction design, and design systems
                 </strong>
-                . I believe great design is invisible — it removes friction, guides attention,
+                . I believe great design is invisible, it removes friction, guides attention,
                 and makes complex tasks feel effortless.
               </p>
               <p>

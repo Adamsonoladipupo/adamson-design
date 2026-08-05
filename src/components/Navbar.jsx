@@ -109,7 +109,7 @@ export default function Navbar({ dark, toggleDark }) {
             <a href="/" className="flex items-center gap-2.5 font-display font-bold text-base tracking-tight text-[var(--ink)]">
               <span
                 className="w-7 h-7 rounded-lg flex items-center justify-center text-white text-sm font-bold"
-                style={{ background: 'linear-gradient(135deg,#4F46E5,#818CF8)' }}
+                style={{ background: 'linear-gradient(135deg,#344885,#7A8FCC)' }}
               >
                 A
               </span>
@@ -141,7 +141,7 @@ export default function Navbar({ dark, toggleDark }) {
               <a
                 href="#contact"
                 className="text-sm font-semibold px-4 py-2 rounded-lg text-white shadow-cta hover:opacity-90 transition-opacity"
-                style={{ background: 'linear-gradient(135deg,#4F46E5,#6366F1)' }}
+                style={{ background: 'linear-gradient(135deg,#344885,#5B72BB)' }}
               >
                 Hire me
               </a>
@@ -226,7 +226,7 @@ export default function Navbar({ dark, toggleDark }) {
                 href="#contact"
                 onClick={handleLinkClick}
                 className="block w-full text-center text-sm font-bold py-3.5 rounded-xl text-white shadow-cta hover:opacity-90 transition-opacity"
-                style={{ background: 'linear-gradient(135deg,#4F46E5,#6366F1)' }}
+                style={{ background: 'linear-gradient(135deg,#344885,#5B72BB)' }}
               >
                 Hire me
               </a>

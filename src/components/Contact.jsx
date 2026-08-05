@@ -156,7 +156,7 @@ export default function Contact() {
                   <span
                     className="w-10 h-10 flex-shrink-0 rounded-xl flex items-center justify-center text-sm"
                     style={{
-                      background: 'linear-gradient(135deg,rgba(79,70,229,.14),rgba(99,102,241,.10))',
+                      background: 'linear-gradient(135deg,rgba(52,72,133,.14),rgba(91,114,187,.10))',
                     }}
                   >
                     {item.icon}
@@ -191,7 +191,7 @@ export default function Contact() {
               <div className="flex flex-col items-center justify-center py-12 text-center gap-5">
                 <span
                   className="w-14 h-14 rounded-full flex items-center justify-center text-xl text-white"
-                  style={{ background: 'linear-gradient(135deg,#4F46E5,#6366F1)' }}
+                  style={{ background: 'linear-gradient(135deg,#344885,#5B72BB)' }}
                 >
                   ✓
                 </span>
@@ -302,7 +302,7 @@ export default function Contact() {
                     transition-all duration-200
                     disabled:opacity-60 disabled:cursor-not-allowed disabled:active:scale-100
                   "
-                  style={{ background: 'linear-gradient(135deg,#4F46E5,#6366F1)' }}
+                  style={{ background: 'linear-gradient(135deg,#344885,#5B72BB)' }}
                 >
                   {isSending ? (
                     <span className="inline-flex items-center justify-center gap-2">
