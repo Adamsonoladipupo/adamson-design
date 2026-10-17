@@ -26,7 +26,7 @@ export default function UnderMaintenance() {
                      sm:text-[2.75rem]
                      lg:text-[2.9rem]"
         >
-          We&rsquo;ve got something<br />
+          I&rsquo;ve got something<br />
           special in store for you.
         </h1>
 
@@ -36,7 +36,7 @@ export default function UnderMaintenance() {
                      text-[1rem]
                      sm:text-[1.125rem]"
         >
-          And we can&rsquo;t wait for you to see it.<br />
+          And I can&rsquo;t wait for you to see it.<br />
           Please check back soon.
         </p>
 
