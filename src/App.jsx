@@ -6,6 +6,7 @@ import About    from './components/About.jsx'
 import Projects from './components/Projects.jsx'
 import Contact  from './components/Contact.jsx'
 import Footer   from './components/Footer.jsx'
+import UnderMaintenance from './components/UnderMaintenance.jsx'
 
 /**
  * Applies the dark/light class to <html> immediately — no transition delay.
@@ -61,7 +62,7 @@ export default function App() {
     // Remove transition-theme from the root wrapper — theme changes
     // are now instant; individual component transitions remain unaffected.
     <div className="min-h-screen bg-[var(--bg)] text-[var(--ink)] selection:bg-violet-500 selection:text-white">
-      <Navbar dark={dark} toggleDark={toggleDark} />
+      {/* <Navbar dark={dark} toggleDark={toggleDark} />
       <main>
         <Hero />
         <Social />
@@ -69,7 +70,8 @@ export default function App() {
         <Projects />
         <Contact />
       </main>
-      <Footer />
+      <Footer /> */}
+      <UnderMaintenance />
     </div>
   )
 }
