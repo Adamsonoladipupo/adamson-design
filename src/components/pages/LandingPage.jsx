@@ -20,7 +20,6 @@ export default function LandingPage({ dark, toggleDark }) {
         <AboutIntro />
         <ProjectsIntro />
         <Contact />
-        <Social />
       </main>
 
       <Footer />

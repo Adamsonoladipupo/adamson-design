@@ -1,0 +1,168 @@
+
+.footer {
+  --footer-bg: #1c1c1e;
+  --footer-ink: #f7f7f7;
+  --footer-muted: #858589;
+
+  width: 100%;
+  padding: 25px 0 32px;
+  color: var(--footer-ink);
+  background: var(--footer-bg);
+}
+
+.footerInner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+
+  width: min(calc(100% - 80px), 1650px);
+  margin: 0 auto;
+}
+
+.footerMeta {
+  display: flex;
+  align-items: flex-start;
+  gap: 44px;
+}
+
+.footerMetaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.footerLabel {
+  color: var(--footer-muted);
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.footerValue {
+  color: var(--footer-ink);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.footerSocials {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.socialLinks {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.socialLink {
+  color: var(--footer-ink);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-decoration: none;
+
+  transition: color 250ms ease;
+}
+
+.socialLink:hover {
+  color: var(--footer-muted);
+}
+
+.socialLink:focus-visible {
+  outline: 2px solid #455fef;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .footerInner {
+    width: calc(100% - 60px);
+    gap: 30px;
+  }
+
+  .footerMeta {
+    gap: 28px;
+  }
+
+  .socialLinks {
+    gap: 18px;
+  }
+
+  .footerValue,
+  .socialLink {
+    font-size: 13px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 35px 0 28px;
+  }
+
+  .footerInner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 42px;
+    width: calc(100% - 40px);
+  }
+
+  .footerMeta {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .footerMetaItem {
+    gap: 14px;
+  }
+
+  .footerSocials {
+    width: 100%;
+    gap: 16px;
+  }
+
+  .socialLinks {
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .footerValue,
+  .socialLink {
+    font-size: 12px;
+  }
+}
+
+/* Small phones */
+
+@media (max-width: 380px) {
+  .footerMeta {
+    gap: 22px;
+  }
+
+  .socialLinks {
+    gap: 15px;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .socialLink {
+    transition: none;
+  }
+}

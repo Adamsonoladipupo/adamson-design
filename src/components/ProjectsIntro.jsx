@@ -1,149 +1,192 @@
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import styles from './ProjectsIntro.module.css'
+
 import imgGlidr from './assets/glidr.png'
 import imgSaveliens from './assets/saveliens.png'
 import imgGiftara from './assets/giftara.png'
 import imgSwaply from './assets/swaply.png'
 import imgEcoearn from './assets/Ecoearn.png'
-import styles from './ProjectsIntro.module.css'
 
 const PROJECTS = [
   {
     name: 'Glidr',
     contribution: 'Design & Development',
     href: 'https://shop-with-glidr.onrender.com/',
-    img: imgGlidr,
+    image: imgGlidr,
   },
   {
     name: 'Saveliens',
-    contribution: 'Design & Development',
+    contribution: 'Product Design & Development',
     href: 'https://saveliens.onrender.com/',
-    img: imgSaveliens,
+    image: imgSaveliens,
   },
   {
     name: 'Giftara',
     contribution: 'Product Design',
     href: 'https://giftara.app/',
-    img: imgGiftara,
+    image: imgGiftara,
   },
   {
     name: 'Swaply',
-    contribution: 'UX/UI Design',
+    contribution: 'UX/UI Design & Case Study',
     href: 'https://www.behance.net/gallery/224400063/Swaply-Convert-crypto-withdraw-into-your-local-Bank',
-    img: imgSwaply,
+    image: imgSwaply,
   },
   {
     name: 'EcoEarn',
-    contribution: 'Product Design',
+    contribution: 'Product Design & Research',
     href: 'https://www.behance.net/gallery/217668017/EcoEarn-App-(Case-Study)',
-    img: imgEcoearn,
+    image: imgEcoearn,
   },
 ]
 
-const INITIAL_COUNT = 3
-const LOAD_COUNT = 3
-
-function ProjectRow({ project }) {
-  const [hovered, setHovered] = useState(false)
-  const [cursor, setCursor] = useState({ x: 0, y: 0 })
-
-  function handlePointerEnter(event) {
-    if (event.pointerType === 'touch') return
-
-    const bounds = event.currentTarget.getBoundingClientRect()
-
-    setCursor({
-      x: event.clientX - bounds.left,
-      y: event.clientY - bounds.top,
-    })
-    setHovered(true)
-  }
-
-  function handlePointerMove(event) {
-    if (event.pointerType === 'touch') return
-
-    const bounds = event.currentTarget.getBoundingClientRect()
-
-    setCursor({
-      x: event.clientX - bounds.left,
-      y: event.clientY - bounds.top,
-    })
-  }
-
-  return (
-    <a
-      href={project.href}
-      target="_blank"
-      rel="noreferrer"
-      className={`${styles.projectRow} ${hovered ? styles.projectRowHovered : ''}`}
-      onPointerEnter={handlePointerEnter}
-      onPointerMove={handlePointerMove}
-      onPointerLeave={() => setHovered(false)}
-    >
-      <span className={styles.projectName}>{project.name}</span>
-
-      <span className={styles.projectContribution}>
-        {project.contribution}
-      </span>
-
-      {hovered && (
-        <span className={styles.projectPreview} aria-hidden="true">
-          <img
-            src={project.img}
-            alt=""
-            className={styles.previewImage}
-          />
-        </span>
-      )}
-
-      {hovered && (
-        <span
-          className={styles.cursorView}
-          style={{
-            left: `${cursor.x}px`,
-            top: `${cursor.y}px`,
-          }}
-          aria-hidden="true"
-        >
-          View
-        </span>
-      )}
-    </a>
-  )
-}
+const INITIAL_VISIBLE = 3
+const LOAD_STEP = 3
 
 export default function ProjectsIntro() {
-  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT)
-  const hasMore = visibleCount < PROJECTS.length
+  const sectionRef = useRef(null)
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE)
+  const [hoveredProject, setHoveredProject] = useState(null)
+  const [previewPosition, setPreviewPosition] = useState({ x: 0, y: 0 })
 
-  function loadMore() {
-    setVisibleCount((count) =>
-      Math.min(count + LOAD_COUNT, PROJECTS.length),
-    )
+  // Update the curved lower edge as the section moves up the viewport.
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    let frameId = 0
+
+    const updateCurve = () => {
+      cancelAnimationFrame(frameId)
+
+      frameId = requestAnimationFrame(() => {
+        const rect = section.getBoundingClientRect()
+        const viewportHeight = window.innerHeight
+
+        const progress = Math.max(
+          0,
+          Math.min(
+            1,
+            (viewportHeight - rect.bottom) / (viewportHeight * 0.8),
+          ),
+        )
+
+        section.style.setProperty(
+          '--curve-depth',
+          `${progress * 85}px`,
+        )
+      })
+    }
+
+    updateCurve()
+
+    window.addEventListener('scroll', updateCurve, { passive: true })
+    window.addEventListener('resize', updateCurve)
+
+    return () => {
+      cancelAnimationFrame(frameId)
+      window.removeEventListener('scroll', updateCurve)
+      window.removeEventListener('resize', updateCurve)
+    }
+  }, [])
+
+  const handleProjectMove = (event) => {
+    const row = event.currentTarget
+    const rect = row.getBoundingClientRect()
+
+    setPreviewPosition({
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top,
+    })
   }
+
+  const visibleProjects = PROJECTS.slice(0, visibleCount)
+  const hasMoreProjects = visibleCount < PROJECTS.length
 
   return (
     <section
+      ref={sectionRef}
       id="projects"
       className={styles.projectsIntro}
       aria-label="Recent work"
     >
       <div className={styles.projectList}>
-        {PROJECTS.slice(0, visibleCount).map((project) => (
-          <ProjectRow key={project.name} project={project} />
-        ))}
+        {visibleProjects.map((project) => {
+          const isHovered = hoveredProject === project.name
+
+          return (
+            <a
+              key={project.name}
+              href={project.href}
+              target="_blank"
+              rel="noreferrer"
+              className={`${styles.projectRow} ${
+                isHovered ? styles.projectRowHovered : ''
+              }`}
+              onMouseEnter={(event) => {
+                setHoveredProject(project.name)
+                handleProjectMove(event)
+              }}
+              onMouseMove={handleProjectMove}
+              onMouseLeave={() => setHoveredProject(null)}
+            >
+              <span className={styles.projectName}>
+                {project.name}
+              </span>
+
+              <span className={styles.projectContribution}>
+                {project.contribution}
+              </span>
+
+              {isHovered && (
+                <>
+                  <span
+                    className={styles.projectPreview}
+                    style={{
+                      left: previewPosition.x,
+                      top: previewPosition.y,
+                    }}
+                    aria-hidden="true"
+                  >
+                    <img
+                      src={project.image}
+                      alt=""
+                      className={styles.previewImage}
+                    />
+                  </span>
+
+                  <span
+                    className={styles.cursorView}
+                    style={{
+                      left: previewPosition.x,
+                      top: previewPosition.y,
+                    }}
+                    aria-hidden="true"
+                  >
+                    View
+                  </span>
+                </>
+              )}
+            </a>
+          )
+        })}
       </div>
 
-      {hasMore && (
+      {hasMoreProjects && (
         <div className={styles.moreWorkWrap}>
           <button
             type="button"
             className={styles.moreWorkButton}
-            onClick={loadMore}
+            onClick={() => {
+              setVisibleCount((count) =>
+                Math.min(count + LOAD_STEP, PROJECTS.length),
+              )
+            }}
           >
             <span className={styles.moreWorkFill} aria-hidden="true" />
             <span className={styles.moreWorkLabel}>
-              Load more
+              More work
               <sup className={styles.projectCount}>
                 {PROJECTS.length - visibleCount}
               </sup>

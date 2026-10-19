@@ -1,48 +1,79 @@
-const LINKS = [
-  { label: 'Projects', href: '#projects' },
-  { label: 'About',    href: '#about' },
-  { label: 'Contact',  href: '#contact' },
+
+import { useEffect, useState } from 'react'
+import styles from './Footer.module.css'
+
+const SOCIALS = [
+  { label: 'Behance', href: 'https://www.behance.net/' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
+  { label: 'GitHub', href: 'https://github.com/' },
 ]
 
+function getLocalTime() {
+  const now = new Date()
+
+  const time = new Intl.DateTimeFormat(undefined, {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true,
+  }).format(now)
+
+  const timeZone = new Intl.DateTimeFormat(undefined, {
+    timeZoneName: 'short',
+  })
+    .formatToParts(now)
+    .find((part) => part.type === 'timeZoneName')?.value
+
+  return {
+    time,
+    timeZone: timeZone || 'Local time',
+  }
+}
+
 export default function Footer() {
-  const year = new Date().getFullYear()
+  const [localTime, setLocalTime] = useState(getLocalTime)
+
+  useEffect(() => {
+    const updateTime = () => setLocalTime(getLocalTime())
+
+    updateTime()
+    const intervalId = window.setInterval(updateTime, 60_000)
+
+    return () => window.clearInterval(intervalId)
+  }, [])
 
   return (
-    <footer className="border-t border-[var(--border)] bg-[var(--surface)] transition-theme">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 py-10">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-
-          {/* Logo + tagline */}
-          <div className="flex flex-col items-center sm:items-start gap-1">
-            <a href="/" className="flex items-center gap-2.5 font-display font-bold text-base tracking-tight text-[var(--ink)]">
-              <span
-                className="w-7 h-7 rounded-lg flex items-center justify-center text-white text-sm font-bold"
-                style={{ background: 'linear-gradient(135deg,#344885,#5B72BB)' }}
-              >
-                A
-              </span>
-              A. Adamson
-            </a>
-            <p className="text-xs text-[var(--muted)]">Product Designer</p>
+    <footer className={styles.footer}>
+      <div className={styles.footerInner}>
+        <div className={styles.footerMeta}>
+          <div className={styles.footerMetaItem}>
+            <span className={styles.footerLabel}>Version</span>
+            <span className={styles.footerValue}>2026 © Edition</span>
           </div>
 
-          {/* Nav */}
-          <nav className="flex flex-wrap gap-6 justify-center">
-            {LINKS.map((l) => (
+          <div className={styles.footerMetaItem}>
+            <span className={styles.footerLabel}>Local time</span>
+            <span className={styles.footerValue}>
+              {localTime.time} {localTime.timeZone}
+            </span>
+          </div>
+        </div>
+
+        <div className={styles.footerSocials}>
+          <span className={styles.footerLabel}>Socials</span>
+
+          <nav aria-label="Social media" className={styles.socialLinks}>
+            {SOCIALS.map((social) => (
               <a
-                key={l.label}
-                href={l.href}
-                className="text-xs font-medium text-[var(--muted)] hover:text-[var(--ink)] transition-theme"
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                className={styles.socialLink}
               >
-                {l.label}
+                {social.label}
               </a>
             ))}
           </nav>
-
-          {/* Copyright */}
-          <p className="text-xs text-[var(--muted)]">
-            © {year} A. Adamson. All rights reserved.
-          </p>
         </div>
       </div>
     </footer>

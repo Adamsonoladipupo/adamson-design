@@ -8,6 +8,21 @@ const LINKS = [
   { label: 'Contact', href: '#contact' },
 ]
 
+const SOCIAL_LINKS = [
+  {
+    label: 'Behance',
+    href: 'https://www.behance.net/',
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/',
+  },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/',
+  },
+]
+
 const DRAWER_DURATION = 850
 const SCROLL_THRESHOLD = 60
 
@@ -50,7 +65,7 @@ export default function Navbar() {
     }, DRAWER_DURATION)
   }, [open, closing])
 
-  // Transform the navigation when scrolling, on every screen size.
+  // Transform the navigation when scrolling.
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > SCROLL_THRESHOLD)
@@ -100,7 +115,7 @@ export default function Navbar() {
     }
   }, [open, closing])
 
-  // Clear any pending animation timer when the component unmounts.
+  // Clear the pending animation timer when the component unmounts.
   useEffect(() => {
     return () => window.clearTimeout(closeTimer.current)
   }, [])
@@ -228,10 +243,33 @@ export default function Navbar() {
               ))}
             </div>
 
-            <div className={styles.drawerFooter}>
+            <div className={styles.drawerSocials}>
+              <span className={styles.drawerEyebrow}>
+                SOCIALS
+              </span>
+
+
+              <div className={styles.socialLinks}>
+                {SOCIAL_LINKS.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.socialLink}
+                    tabIndex={closing ? -1 : 0}
+                  >
+                    {social.label}
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* <div className={styles.drawerFooter}>
               <span>© Abdulwahab Adamson</span>
               <span>Available for opportunities</span>
-            </div>
+            </div> */}
           </nav>
         </div>
       )}
