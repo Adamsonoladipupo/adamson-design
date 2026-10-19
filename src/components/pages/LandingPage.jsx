@@ -8,6 +8,7 @@ import Contact from '../Contact.jsx'
 import Footer from '../Footer.jsx'
 
 import styles from './LandingPage.module.css'
+import ProjectsIntro from '../ProjectsIntro.jsx'
 
 export default function LandingPage({ dark, toggleDark }) {
   return (
@@ -17,7 +18,7 @@ export default function LandingPage({ dark, toggleDark }) {
       <main>
         <Hero />
         <AboutIntro />
-        <Projects />
+        <ProjectsIntro />
         <Contact />
         <Social />
       </main>
