@@ -1,0 +1,250 @@
+
+.aboutSection {
+  --about-ink: #1c1c1e;
+  --about-blue: #455fbd;
+  --about-muted: #858585;
+  --about-line: #dedede;
+
+  width: 100%;
+  padding: clamp(100px, 10vw, 165px) 0 0;
+  color: var(--about-ink);
+  background: #fff;
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 2.5fr) minmax(220px, 1fr);
+  gap: clamp(55px, 8vw, 130px);
+
+  width: min(calc(100% - 64px), 1165px);
+  margin: 0 auto;
+}
+
+.statement {
+  max-width: 780px;
+  margin: 0;
+
+  font-size: clamp(30px, 2.25vw, 40px);
+  font-weight: 400;
+  line-height: 1.46;
+  letter-spacing: -0.045em;
+}
+
+.aboutAside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.description {
+  max-width: 255px;
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.85;
+  letter-spacing: -0.025em;
+}
+
+/* Circular About button */
+
+.aboutButton {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: grid;
+  width: 195px;
+  height: 195px;
+  flex: 0 0 auto;
+  place-items: center;
+
+  margin-top: 62px;
+  border: none;
+  border-radius: 50%;
+
+  color: #fff;
+  background: var(--about-ink);
+  text-decoration: none;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.buttonFill {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+
+  border-radius: 50%;
+  background: var(--about-blue);
+
+  /* Start hidden at the bottom and reveal upward */
+  clip-path: inset(100% 0 0 0 round 50%);
+
+  transition:
+    clip-path 650ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  pointer-events: none;
+}
+
+.buttonLabel {
+  position: relative;
+  z-index: 1;
+
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+
+  transition: transform 350ms ease;
+}
+
+/* Blue fill rises from the bottom to cover the circle */
+
+.aboutButton:hover .buttonFill,
+.aboutButton:focus-visible .buttonFill {
+  clip-path: inset(0 0 0 0 round 50%);
+}
+
+.aboutButton:hover .buttonLabel,
+.aboutButton:focus-visible .buttonLabel {
+  transform: scale(1.04);
+}
+
+.aboutButton:focus-visible {
+  outline: 2px solid var(--about-blue);
+  outline-offset: 5px;
+}
+
+/* Recent work label and divider */
+
+.workHeading {
+  display: flex;
+  align-items: center;
+
+  width: min(calc(100% - 64px), 1460px);
+  min-height: 65px;
+  margin: 24px auto 0;
+
+  border-bottom: 1px solid var(--about-line);
+}
+
+.workHeading span {
+  color: var(--about-muted);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .aboutSection {
+    padding-top: 110px;
+  }
+
+  .aboutGrid {
+    grid-template-columns: minmax(0, 1.7fr) minmax(190px, 1fr);
+    gap: 45px;
+    width: calc(100% - 60px);
+  }
+
+  .statement {
+    font-size: clamp(28px, 3.6vw, 36px);
+    line-height: 1.4;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .aboutButton {
+    width: 160px;
+    height: 160px;
+    margin-top: 45px;
+  }
+
+  .workHeading {
+    width: calc(100% - 60px);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .aboutSection {
+    padding-top: 85px;
+  }
+
+  .aboutGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+
+    width: calc(100% - 40px);
+  }
+
+  .statement {
+    max-width: 100%;
+    font-size: clamp(28px, 7.5vw, 38px);
+    line-height: 1.35;
+    letter-spacing: -0.045em;
+  }
+
+  .aboutAside {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 112px;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .description {
+    max-width: 300px;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .aboutButton {
+    width: 112px;
+    height: 112px;
+    margin-top: 0;
+    justify-self: end;
+  }
+
+  .buttonLabel {
+    font-size: 13px;
+  }
+
+  .workHeading {
+    width: calc(100% - 40px);
+    min-height: 60px;
+    margin-top: 55px;
+  }
+}
+
+/* Small mobile screens */
+
+@media (max-width: 380px) {
+  .aboutAside {
+    grid-template-columns: minmax(0, 1fr) 96px;
+    gap: 12px;
+  }
+
+  .aboutButton {
+    width: 96px;
+    height: 96px;
+  }
+
+  .buttonLabel {
+    font-size: 12px;
+  }
+}
+
+/* Respect accessibility preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .buttonFill,
+  .buttonLabel {
+    transition: none;
+  }
+}

@@ -1,0 +1,16 @@
+
+.landingPage {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: clip;
+}
+
+.landingPage main {
+  display: block;
+  width: 100%;
+}
+
+.landingPage main > section {
+  position: relative;
+}

@@ -1,0 +1,432 @@
+
+.hero {
+  --hero-text: #fff;
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  color: var(--hero-text);
+  background: #9c9f9f;
+}
+
+/* Full-screen background portrait */
+
+.background {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  overflow: hidden;
+  background: #9c9f9f;
+}
+
+.backgroundImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.backgroundOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(35, 38, 39, 0.13);
+  pointer-events: none;
+}
+
+/* Left location tab */
+
+.location {
+  position: absolute;
+  z-index: 3;
+  top: 36%;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  min-height: 110px;
+  padding: 16px 16px 16px 46px;
+
+  border-radius: 0 100px 100px 0;
+  background: #19191b;
+
+  animation: locationSlideIn 950ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.locationCopy {
+  display: flex;
+  flex-direction: column;
+  min-width: 110px;
+
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+}
+
+.globeCircle {
+  display: grid;
+  width: 76px;
+  height: 76px;
+  flex: 0 0 76px;
+  place-items: center;
+
+  border-radius: 50%;
+  background: #9c9f9f;
+}
+
+.globe {
+  width: 40px;
+  height: 40px;
+
+  stroke: #fff;
+  stroke-width: 1.5;
+
+  animation: globeSpin 12s linear infinite;
+}
+
+/* Right-side roles */
+
+.roles {
+  position: absolute;
+  z-index: 3;
+  top: 23%;
+  right: clamp(32px, 7.8vw, 145px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 55px;
+
+  animation: rolesSlideIn 950ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
+}
+
+.diagonalArrow {
+  display: block;
+  width: 32px;
+  height: 32px;
+
+  stroke: #fff;
+  stroke-width: 1.6;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+
+  transition: transform 250ms ease;
+}
+
+.roles:hover .diagonalArrow {
+  transform: translate(5px, 5px);
+}
+
+.roleText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  font-size: clamp(25px, 2.2vw, 41px);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+}
+
+/* Oversized continuous name ticker */
+
+.nameViewport {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 13%;
+  left: 0;
+
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.nameTrack {
+  display: flex;
+  width: max-content;
+  align-items: center;
+
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.nameCopy {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.16em;
+  padding-right: 0.3em;
+
+  color: #fff;
+  font-size: clamp(105px, 14.1vw, 260px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.075em;
+  white-space: nowrap;
+}
+
+.nameDash {
+  display: inline-block;
+  padding-inline: 0.08em;
+  font-weight: 300;
+  letter-spacing: 0;
+}
+
+/* Bottom scroll cue */
+
+.scrollHint {
+  position: absolute;
+  z-index: 4;
+  right: clamp(24px, 6vw, 100px);
+  bottom: 28px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  color: #fff;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+
+  opacity: 0.9;
+  transition: opacity 200ms ease;
+}
+
+.scrollHint:hover {
+  opacity: 1;
+}
+
+.scrollArrow {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 50%;
+
+  font-size: 17px;
+  transition: transform 200ms ease;
+}
+
+.scrollHint:hover .scrollArrow {
+  transform: translateY(4px);
+}
+
+/* Entrance animations */
+
+@keyframes locationSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-110%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes rolesSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(70px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes globeSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+  .backgroundImage {
+    object-position: center center;
+  }
+
+  .location {
+    min-height: 88px;
+    gap: 14px;
+    padding: 12px 12px 12px 24px;
+  }
+
+  .locationCopy {
+    min-width: 90px;
+    font-size: 14px;
+  }
+
+  .globeCircle {
+    width: 60px;
+    height: 60px;
+    flex-basis: 60px;
+  }
+
+  .globe {
+    width: 33px;
+    height: 33px;
+  }
+
+  .roles {
+    top: 24%;
+    right: 5%;
+    gap: 35px;
+  }
+
+  .roleText {
+    font-size: clamp(22px, 3vw, 32px);
+  }
+
+  .nameViewport {
+    bottom: 17%;
+  }
+
+  .nameCopy {
+    font-size: clamp(90px, 14vw, 150px);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: 680px;
+    height: 100vh;
+    height: 100svh;
+  }
+
+  .backgroundImage {
+    object-position: 52% center;
+  }
+
+  .backgroundOverlay {
+    background: rgba(35, 38, 39, 0.24);
+  }
+
+  .location {
+    top: 29%;
+    gap: 9px;
+    min-height: 68px;
+    padding: 8px 8px 8px 14px;
+  }
+
+  .locationCopy {
+    min-width: 72px;
+    font-size: 11px;
+  }
+
+  .globeCircle {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+  }
+
+  .globe {
+    width: 27px;
+    height: 27px;
+  }
+
+  .roles {
+    top: 17%;
+    right: 18px;
+    gap: 22px;
+  }
+
+  .diagonalArrow {
+    width: 25px;
+    height: 25px;
+  }
+
+  .roleText {
+    gap: 6px;
+    font-size: clamp(18px, 4.5vw, 25px);
+    line-height: 1.25;
+    white-space: normal;
+  }
+
+  .nameViewport {
+    bottom: 17%;
+  }
+
+  .nameCopy {
+    font-size: clamp(70px, 16vw, 105px);
+    letter-spacing: -0.07em;
+  }
+
+  .scrollHint {
+    right: 18px;
+    bottom: 18px;
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 380px) {
+  .location {
+    top: 31%;
+    padding-left: 10px;
+  }
+
+  .locationCopy {
+    min-width: 63px;
+    font-size: 10px;
+  }
+
+  .globeCircle {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+
+  .roles {
+    right: 12px;
+  }
+
+  .roleText {
+    max-width: 180px;
+    font-size: 18px;
+  }
+
+  .nameCopy {
+    font-size: 66px;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .location,
+  .roles {
+    animation: none;
+  }
+
+  .globe {
+    animation: none;
+  }
+
+  .diagonalArrow,
+  .scrollArrow {
+    transition: none;
+  }
+}

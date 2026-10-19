@@ -1,0 +1,746 @@
+
+/* =====================================================
+   NAVBAR — BASE
+===================================================== */
+
+.header {
+  --nav-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --nav-ink: var(--ink, #171717);
+
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  min-height: 96px;
+  padding: 0 clamp(24px, 6vw, 100px);
+
+  color: var(--nav-ink);
+
+  transition:
+    min-height 0.5s var(--nav-ease),
+    padding 0.5s var(--nav-ease),
+    color 0.35s ease;
+}
+
+/* =====================================================
+   BRAND — HOVER NAME TRANSITION
+===================================================== */
+
+.brand {
+  position: relative;
+  z-index: 2;
+
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 44px;
+
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease,
+    transform 0.45s var(--nav-ease);
+}
+
+.brandLabel {
+  position: relative;
+
+  display: grid;
+  align-items: center;
+
+  overflow: hidden;
+
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+.brandShort,
+.brandFull {
+  grid-area: 1 / 1;
+
+  transition:
+    transform 0.65s var(--nav-ease),
+    opacity 0.4s ease;
+}
+
+.brandShort {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.brandFull {
+  opacity: 0;
+  transform: translateY(110%);
+}
+
+.brand:hover .brandShort,
+.brand:focus-visible .brandShort {
+  opacity: 0;
+  transform: translateY(-110%);
+}
+
+.brand:hover .brandFull,
+.brand:focus-visible .brandFull {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hide the name after scrolling */
+
+.headerScrolled .brand {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
+/* =====================================================
+   DESKTOP NAVIGATION — TOP RIGHT
+===================================================== */
+
+.desktopNav {
+  position: absolute;
+  top: 50%;
+  right: clamp(100px, 10vw, 160px);
+  left: auto;
+
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 3vw, 48px);
+
+  transform: translateY(-50%);
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.55s var(--nav-ease),
+    visibility 0.4s ease;
+}
+
+.desktopLink {
+  position: relative;
+
+  padding: 12px 0;
+
+  color: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+
+  transition: opacity 0.3s ease;
+}
+
+.desktopLink:hover {
+  opacity: 0.65;
+}
+
+.desktopLink::after {
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+  left: 0;
+
+  height: 1px;
+
+  background: currentColor;
+  content: "";
+
+  transform: scaleX(0);
+  transform-origin: right;
+
+  transition: transform 0.45s var(--nav-ease);
+}
+
+.desktopLink:hover::after,
+.desktopLink:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* =====================================================
+   HAMBURGER — BLACK CIRCLE
+===================================================== */
+
+.menuButton {
+  position: relative;
+  z-index: 102;
+
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+
+  width: 52px;
+  height: 52px;
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: #111;
+  color: #fff;
+
+  cursor: pointer;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.55);
+
+  transition:
+    width 0.5s var(--nav-ease),
+    height 0.5s var(--nav-ease),
+    background 0.35s ease,
+    color 0.35s ease,
+    opacity 0.35s ease,
+    visibility 0.35s ease,
+    transform 0.55s var(--nav-ease);
+}
+
+.menuIcon {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+
+  width: 19px;
+  height: 14px;
+}
+
+.menuIcon span {
+  display: block;
+
+  width: 100%;
+  height: 1.5px;
+
+  border-radius: 2px;
+  background: currentColor;
+
+  transform-origin: center;
+
+  transition:
+    transform 0.35s var(--nav-ease),
+    width 0.35s ease;
+}
+
+.menuIcon span:last-child {
+  width: 70%;
+  align-self: flex-end;
+}
+
+.menuButton:hover .menuIcon span:last-child {
+  width: 100%;
+}
+
+.menuIconOpen span:first-child {
+  transform: translateY(3.25px) rotate(45deg);
+}
+
+.menuIconOpen span:last-child {
+  width: 100%;
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+
+.menuButton:hover {
+  transform: scale(1.04);
+}
+
+.menuButton:focus-visible,
+.drawerClose:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 5px;
+}
+
+/* =====================================================
+   SCROLL STATE
+===================================================== */
+
+.headerScrolled {
+  min-height: 80px;
+}
+
+.headerScrolled .desktopNav {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(calc(-50% - 12px));
+  pointer-events: none;
+}
+
+.headerScrolled .menuButton {
+  width: 64px;
+  height: 64px;
+
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.headerScrolled .menuButton:hover {
+  transform: scale(1.06);
+}
+
+.headerMenuOpen .menuButton {
+  background: #252525;
+}
+
+/* =====================================================
+   MOBILE NAVIGATION
+===================================================== */
+
+@media (max-width: 760px) {
+  .header {
+    min-height: 78px;
+    padding: 0 22px;
+  }
+
+  .desktopNav {
+    display: none;
+  }
+
+  /* Hamburger remains visible on mobile before scrolling. */
+  .menuButton {
+    width: 48px;
+    height: 48px;
+
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+
+  .headerScrolled {
+    min-height: 72px;
+  }
+
+  .headerScrolled .menuButton {
+    width: 62px;
+    height: 62px;
+  }
+}
+
+@media (max-width: 380px) {
+  .header {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .brandLabel {
+    font-size: 12px;
+  }
+
+  .menuButton {
+    width: 44px;
+    height: 44px;
+  }
+
+  .headerScrolled .menuButton {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+/* =====================================================
+   SIDEBAR OVERLAY
+===================================================== */
+
+.menuLayer {
+  position: fixed;
+  z-index: 101;
+  inset: 0;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  padding: 0;
+
+  border: 0;
+
+  background: rgb(0 0 0 / 45%);
+
+  cursor: default;
+
+  animation: backdropIn 0.55s ease both;
+}
+
+.menuLayerClosing .backdrop {
+  animation: backdropOut 0.75s ease both;
+}
+
+/* =====================================================
+   SIDEBAR — CURVED, FLUID SLIDE
+===================================================== */
+
+.drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  width: min(520px, 100%);
+  height: 100%;
+  padding: 35px clamp(24px, 5vw, 54px) 28px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  background: #111;
+  color: #fff;
+
+  border-radius: 48% 0 0 48% / 50% 0 0 50%;
+
+  clip-path: inset(0 0 0 0 round 50% 0 0 50%);
+
+  animation:
+    drawerCurveIn 1s cubic-bezier(0.76, 0, 0.24, 1) both;
+
+  will-change: transform, clip-path, border-radius;
+  backface-visibility: hidden;
+}
+
+.drawerClosing {
+  pointer-events: none;
+
+  animation:
+    drawerCurveOut 0.85s cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+/* Curved edge progressively straightens on entry */
+
+@keyframes drawerCurveIn {
+  0% {
+    transform: translate3d(100%, 0, 0);
+    border-radius: 48% 0 0 48% / 50% 0 0 50%;
+    clip-path: inset(0 0 0 0 round 50% 0 0 50%);
+  }
+
+  35% {
+    transform: translate3d(10%, 0, 0);
+    border-radius: 32% 0 0 32% / 50% 0 0 50%;
+    clip-path: inset(0 0 0 0 round 32% 0 0 32%);
+  }
+
+  65% {
+    transform: translate3d(-1%, 0, 0);
+    border-radius: 8% 0 0 8% / 50% 0 0 50%;
+    clip-path: inset(0 0 0 0 round 8% 0 0 8%);
+  }
+
+  85% {
+    transform: translate3d(0, 0, 0);
+    border-radius: 2% 0 0 2% / 50% 0 0 50%;
+    clip-path: inset(0 0 0 0 round 2% 0 0 2%);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+    border-radius: 0;
+    clip-path: inset(0);
+  }
+}
+
+/* Curved edge grows as the panel exits */
+
+@keyframes drawerCurveOut {
+  0% {
+    transform: translate3d(0, 0, 0);
+    border-radius: 0;
+    clip-path: inset(0);
+  }
+
+  25% {
+    transform: translate3d(-1%, 0, 0);
+    border-radius: 4% 0 0 4% / 50% 0 0 50%;
+    clip-path: inset(0 0 0 0 round 4% 0 0 4%);
+  }
+
+  55% {
+    transform: translate3d(12%, 0, 0);
+    border-radius: 28% 0 0 28% / 50% 0 0 50%;
+    clip-path: inset(0 0 0 0 round 28% 0 0 28%);
+  }
+
+  100% {
+    transform: translate3d(100%, 0, 0);
+    border-radius: 48% 0 0 48% / 50% 0 0 50%;
+    clip-path: inset(0 0 0 0 round 50% 0 0 50%);
+  }
+}
+
+/* =====================================================
+   SIDEBAR HEADER AND CLOSE BUTTON
+===================================================== */
+
+.drawerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 48px;
+
+  color: #fff;
+}
+
+.drawerEyebrow {
+  color: rgb(255 255 255 / 65%);
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.drawerClose {
+  display: grid;
+  place-items: center;
+
+  width: 44px;
+  height: 44px;
+  padding: 0;
+
+  border: 1px solid rgb(255 255 255 / 30%);
+  border-radius: 50%;
+
+  background: transparent;
+  color: #fff;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.4s var(--nav-ease);
+}
+
+.drawerClose:hover {
+  background: #fff;
+  color: #111;
+  transform: rotate(90deg);
+}
+
+/* =====================================================
+   SIDEBAR LINKS — EXPLICIT WHITE VISIBILITY
+===================================================== */
+
+.drawer .drawerLinks {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 50px 0;
+}
+
+.drawer .drawerLink {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) 25px;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+  padding: 20px 0;
+
+  border-bottom: 1px solid rgb(255 255 255 / 25%);
+
+  color: #fff;
+  text-decoration: none;
+
+  opacity: 0;
+  visibility: visible;
+  transform: translate3d(0, 18px, 0);
+
+  animation:
+    sidebarLinkIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  animation-delay: calc(0.12s + var(--link-index, 0) * 0.09s);
+}
+
+.drawer .linkNumber {
+  color: rgb(255 255 255 / 65%);
+  font-size: 10px;
+
+  opacity: 1;
+  visibility: visible;
+}
+
+.drawer .linkLabel {
+  display: block;
+
+  color: #fff;
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+
+  opacity: 1;
+  visibility: visible;
+
+  transition: transform 0.4s var(--nav-ease);
+}
+
+.drawer .linkArrow {
+  display: block;
+  justify-self: end;
+
+  color: #fff;
+  font-size: 20px;
+
+  opacity: 0;
+  transform: translate(-6px, 6px);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.4s var(--nav-ease);
+}
+
+.drawer .drawerLink:hover .linkLabel {
+  transform: translateX(8px);
+}
+
+.drawer .drawerLink:hover .linkArrow {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.drawer .drawerLink:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 6px;
+}
+
+.drawerClosing .drawerLink {
+  animation: sidebarLinkOut 0.22s ease both;
+  animation-delay: 0s;
+}
+
+/* Staggered link entry */
+
+@keyframes sidebarLinkIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes sidebarLinkOut {
+  to {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+}
+
+/* =====================================================
+   SIDEBAR FOOTER
+===================================================== */
+
+.drawerFooter {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding-top: 22px;
+
+  border-top: 1px solid rgb(255 255 255 / 22%);
+
+  color: rgb(255 255 255 / 65%);
+  font-size: 10px;
+
+  animation: footerReveal 0.5s ease both;
+  animation-delay: 0.3s;
+}
+
+.drawerClosing .drawerFooter {
+  animation: none;
+}
+
+/* =====================================================
+   BACKDROP AND FOOTER ANIMATIONS
+===================================================== */
+
+@keyframes backdropIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes backdropOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes footerReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .brand,
+  .brandShort,
+  .brandFull,
+  .desktopNav,
+  .desktopLink,
+  .desktopLink::after,
+  .menuButton,
+  .menuIcon span,
+  .drawerClose,
+  .linkLabel,
+  .linkArrow {
+    transition-duration: 0.02ms !important;
+  }
+
+  .drawer,
+  .drawerClosing,
+  .backdrop,
+  .menuLayerClosing .backdrop,
+  .drawer .drawerLink,
+  .drawerClosing .drawerLink,
+  .drawerFooter {
+    animation-duration: 0.02ms !important;
+    animation-delay: 0ms !important;
+  }
+}

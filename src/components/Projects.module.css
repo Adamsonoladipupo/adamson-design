@@ -1,0 +1,128 @@
+
+.loadMoreWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
+}
+
+.loadMoreButton {
+  --load-more-ink: #1c1c1e;
+  --load-more-blue: #455fbd;
+  --load-more-border: #dedede;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 177px;
+  min-height: 76px;
+  padding: 0 38px;
+
+  border: 1px solid var(--load-more-border);
+  border-radius: 999px;
+
+  color: var(--load-more-ink);
+  background: transparent;
+
+  font: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  transition: border-color 300ms ease;
+}
+
+.loadMoreFill {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+
+  border-radius: inherit;
+  background: var(--load-more-blue);
+
+  clip-path: inset(100% 0 0 0 round 999px);
+
+  transition:
+    clip-path 650ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  pointer-events: none;
+}
+
+.loadMoreLabel {
+  position: relative;
+  z-index: 1;
+
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+
+  color: inherit;
+  white-space: nowrap;
+
+  transition:
+    color 250ms ease,
+    transform 350ms ease;
+}
+
+.projectCount {
+  position: relative;
+  top: -0.25em;
+
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.loadMoreButton:hover .loadMoreFill,
+.loadMoreButton:focus-visible .loadMoreFill {
+  clip-path: inset(0 0 0 0 round 999px);
+}
+
+.loadMoreButton:hover,
+.loadMoreButton:focus-visible {
+  border-color: var(--load-more-blue);
+  color: #fff;
+}
+
+.loadMoreButton:hover .loadMoreLabel,
+.loadMoreButton:focus-visible .loadMoreLabel {
+  transform: scale(1.03);
+}
+
+.loadMoreButton:focus-visible {
+  outline: 2px solid var(--load-more-blue);
+  outline-offset: 5px;
+}
+
+.loadMoreButton:active .loadMoreLabel {
+  transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+  .loadMoreWrap {
+    margin-top: 40px;
+  }
+
+  .loadMoreButton {
+    min-width: 155px;
+    min-height: 60px;
+    padding: 0 30px;
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loadMoreFill,
+  .loadMoreLabel,
+  .loadMoreButton {
+    transition: none;
+  }
+}
