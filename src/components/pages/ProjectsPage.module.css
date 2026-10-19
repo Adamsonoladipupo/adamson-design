@@ -1,0 +1,18 @@
+
+.projectsPage {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: clip;
+  background: #fff;
+  color: #1c1c1e;
+}
+
+.projectsPage main {
+  display: block;
+  width: 100%;
+}
+
+.projectsPage main > section {
+  position: relative;
+}

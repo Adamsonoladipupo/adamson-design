@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 import LandingPage from './components/pages/LandingPage.jsx'
 import AboutPage from './components/pages/AboutPage.jsx'
+import ProjectsPage from './components/pages/ProjectsPage.jsx'
 
 function applyTheme(isDark) {
   const root = document.documentElement
@@ -68,6 +69,11 @@ export default function App() {
                 toggleDark={toggleDark}
               />
             }
+          />
+
+          <Route
+            path="/projects"
+            element={<ProjectsPage dark={dark} toggleDark={toggleDark} />}
           />
 
           <Route path="*" element={<Navigate to="/" replace />} />
