@@ -40,7 +40,6 @@ export default function Hero() {
 
   useEffect(() => {
     const track = nameTrackRef.current
-
     if (!track) return
 
     const reducedMotion = window.matchMedia(
@@ -67,8 +66,6 @@ export default function Hero() {
       const delta = currentScrollY - previousScrollY
 
       if (delta !== 0) {
-        // Scrolling down moves the name left.
-        // Scrolling up moves the name right.
         directionRef.current = delta > 0 ? 1 : -1
       }
 
@@ -85,8 +82,6 @@ export default function Hero() {
         const speed = 65
 
         offset += directionRef.current * speed * elapsed
-
-        // Wrap the track seamlessly in either direction.
         offset = ((offset % halfWidth) + halfWidth) % halfWidth
 
         track.style.transform = `translate3d(${-offset}px, 0, 0)`
@@ -96,7 +91,6 @@ export default function Hero() {
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
-
     frameId = window.requestAnimationFrame(animate)
 
     return () => {
@@ -125,7 +119,7 @@ export default function Hero() {
         <div className={styles.backgroundOverlay} />
       </div>
 
-      {/* Location tab protruding from the left */}
+      {/* Location tab */}
       <div className={styles.location}>
         <div className={styles.locationCopy}>
           {LOCATION.map((line) => (
@@ -138,7 +132,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Right-side roles and diagonal arrow */}
+      {/* Role and arrow */}
       <div className={styles.roles}>
         <DiagonalArrow />
 
@@ -160,7 +154,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Bottom scroll cue */}
+      {/* Scroll cue — hidden on mobile */}
       <a href="#projects" className={styles.scrollHint}>
         <span>SCROLL TO EXPLORE</span>
         <span className={styles.scrollArrow} aria-hidden="true">
