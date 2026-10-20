@@ -1,4 +1,3 @@
-
 .contactSection {
   --contact-bg: #1c1c1e;
   --contact-ink: #f7f7f7;
@@ -8,12 +7,9 @@
 
   position: relative;
   z-index: 0;
-
   width: 100%;
   overflow: clip;
-
   padding: clamp(130px, 12vw, 200px) 0 clamp(120px, 12vw, 180px);
-
   color: var(--contact-ink);
   background: var(--contact-bg);
 
@@ -38,10 +34,8 @@
   display: flex;
   align-items: flex-start;
   gap: 35px;
-
   max-width: 1000px;
   margin: 0;
-
   font-size: clamp(64px, 6.2vw, 108px);
   font-weight: 400;
   line-height: 1.04;
@@ -53,7 +47,6 @@
   width: 90px;
   height: 90px;
   margin-top: 5px;
-
   object-fit: cover;
   border-radius: 50%;
   background: #a4a6a6;
@@ -63,15 +56,12 @@
   position: absolute;
   top: 115px;
   right: 0;
-
   display: grid;
   width: 44px;
   height: 44px;
   place-items: center;
-
   color: var(--contact-ink);
   text-decoration: none;
-
   transition:
     transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
     color 300ms ease;
@@ -87,13 +77,12 @@
   height: 28px;
 }
 
-/* Horizontal divider with button toward the right */
+/* Divider with the circular button sitting over it */
 
 .contactDivider {
   position: relative;
   display: flex;
   align-items: center;
-
   height: 1px;
   margin-top: clamp(110px, 10vw, 165px);
   border-top: 1px solid var(--contact-line);
@@ -105,20 +94,16 @@
   right: 8%;
   left: auto;
   z-index: 2;
-
   display: grid;
   width: 195px;
   height: 195px;
   place-items: center;
-
   overflow: hidden;
   border-radius: 50%;
   isolation: isolate;
-
   color: #fff;
   background: var(--contact-blue);
   text-decoration: none;
-
   transform: translateY(-50%);
   -webkit-tap-highlight-color: transparent;
 }
@@ -127,13 +112,10 @@
   position: absolute;
   z-index: 0;
   inset: 0;
-
   border-radius: inherit;
   background: #303034;
-
   clip-path: circle(0% at 50% 50%);
   transition: clip-path 750ms cubic-bezier(0.22, 1, 0.36, 1);
-
   pointer-events: none;
 }
 
@@ -145,11 +127,9 @@
 .buttonLabel {
   position: relative;
   z-index: 1;
-
   font-size: 16px;
   font-weight: 400;
   letter-spacing: -0.025em;
-
   transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -163,7 +143,7 @@
   outline-offset: 6px;
 }
 
-/* Email and phone */
+/* Email and phone links */
 
 .contactLinks {
   display: flex;
@@ -176,21 +156,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   min-height: 76px;
   padding: 0 42px;
-
   border: 1px solid var(--contact-line);
   border-radius: 999px;
-
   color: var(--contact-ink);
   background: transparent;
   text-decoration: none;
-
   font-size: 16px;
   font-weight: 400;
   letter-spacing: -0.025em;
-
   transition:
     color 300ms ease,
     border-color 300ms ease,
@@ -245,11 +220,11 @@
   }
 }
 
-/* Mobile */
+/* Mobile layout based on the reference screenshot */
 
 @media (max-width: 600px) {
   .contactSection {
-    padding: 100px 0 85px;
+    padding: 82px 0 48px;
   }
 
   .contactInner {
@@ -257,89 +232,116 @@
   }
 
   .contactHeading {
-    display: block;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
     max-width: 100%;
-
-    font-size: clamp(48px, 12vw, 72px);
-    line-height: 1.04;
+    font-size: clamp(38px, 10.2vw, 48px);
+    line-height: 1.02;
     letter-spacing: -0.065em;
   }
 
   .profileImage {
-    display: inline-block;
-    width: 48px;
-    height: 48px;
-    margin: 0 12px 0 0;
-    vertical-align: 8px;
+    display: block;
+    flex: 0 0 auto;
+    width: 43px;
+    height: 43px;
+    margin: 2px 0 0;
   }
 
   .contactArrow {
-    top: auto;
-    right: 0;
-    bottom: -50px;
+    top: 54px;
+    right: -2px;
+    bottom: auto;
+    width: 30px;
+    height: 30px;
   }
 
   .arrowIcon {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
   }
 
   .contactDivider {
-    margin-top: 115px;
+    margin-top: 84px;
   }
 
   .getInTouchButton {
-    right: 0;
+    top: 50%;
+    right: 8%;
     left: auto;
-
-    width: 125px;
-    height: 125px;
-
+    width: 145px;
+    height: 145px;
     transform: translateY(-50%);
   }
 
   .buttonLabel {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .contactLinks {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    margin-top: 100px;
+    align-items: stretch;
+    gap: 12px;
+    margin-top: 138px;
   }
 
   .contactPill {
-    min-height: 55px;
-    max-width: 100%;
-    padding: 0 22px;
-    font-size: 13px;
+    width: 100%;
+    min-width: 0;
+    min-height: 68px;
+    padding: 0 14px;
+    font-size: 14px;
+    white-space: nowrap;
   }
 }
 
 /* Small phones */
 
 @media (max-width: 380px) {
+  .contactSection {
+    padding-top: 76px;
+    padding-bottom: 40px;
+  }
+
+  .contactInner {
+    width: calc(100% - 40px);
+  }
+
   .contactHeading {
-    font-size: 46px;
+    gap: 10px;
+    font-size: 38px;
   }
 
   .profileImage {
     width: 40px;
     height: 40px;
-    margin-right: 8px;
-    vertical-align: 7px;
+  }
+
+  .contactArrow {
+    top: 53px;
+  }
+
+  .contactDivider {
+    margin-top: 82px;
   }
 
   .getInTouchButton {
-    width: 108px;
-    height: 108px;
+    right: 8%;
+    width: 145px;
+    height: 145px;
+  }
+
+  .contactLinks {
+    margin-top: 137px;
+    gap: 12px;
   }
 
   .contactPill {
-    min-height: 50px;
-    padding: 0 17px;
-    font-size: 12px;
+    min-height: 68px;
+    padding: 0 10px;
+    font-size: 13px;
   }
 }
 

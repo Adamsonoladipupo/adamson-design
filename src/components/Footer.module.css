@@ -1,8 +1,8 @@
-
 .footer {
   --footer-bg: #1c1c1e;
   --footer-ink: #f7f7f7;
   --footer-muted: #858589;
+  --footer-line: #444447;
 
   width: 100%;
   padding: 25px 0 32px;
@@ -15,7 +15,6 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 40px;
-
   width: min(calc(100% - 80px), 1650px);
   margin: 0 auto;
 }
@@ -71,7 +70,6 @@
   font-weight: 400;
   line-height: 1.4;
   text-decoration: none;
-
   transition: color 250ms ease;
 }
 
@@ -107,55 +105,93 @@
   }
 }
 
-/* Mobile */
+/* Mobile footer: socials first, divider, then two-column metadata */
 
 @media (max-width: 600px) {
   .footer {
-    padding: 35px 0 28px;
+    padding: 0 0 28px;
   }
 
   .footerInner {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 42px;
+    align-items: stretch;
+    gap: 0;
     width: calc(100% - 40px);
   }
 
-  .footerMeta {
-    width: 100%;
-    flex-wrap: wrap;
-    gap: 30px;
-  }
-
-  .footerMetaItem {
-    gap: 14px;
-  }
-
   .footerSocials {
+    order: 1;
     width: 100%;
-    gap: 16px;
+    gap: 20px;
+    padding: 0 0 32px;
+    border-bottom: 1px solid var(--footer-line);
   }
 
   .socialLinks {
+    display: flex;
+    align-items: center;
     justify-content: flex-start;
-    gap: 20px;
+    flex-wrap: nowrap;
+    gap: 22px;
   }
 
-  .footerValue,
   .socialLink {
-    font-size: 12px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .footerMeta {
+    order: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 12px;
+    width: 100%;
+    padding-top: 38px;
+  }
+
+  .footerMetaItem {
+    gap: 18px;
+  }
+
+  .footerMetaItem:nth-child(2) {
+    align-items: flex-start;
+    justify-self: end;
+  }
+
+  .footerLabel {
+    font-size: 9px;
+  }
+
+  .footerValue {
+    font-size: 14px;
+    line-height: 1.4;
   }
 }
 
 /* Small phones */
 
 @media (max-width: 380px) {
-  .footerMeta {
-    gap: 22px;
+  .footerInner {
+    width: calc(100% - 40px);
   }
 
   .socialLinks {
-    gap: 15px;
+    gap: 18px;
+  }
+
+  .socialLink {
+    font-size: 13px;
+  }
+
+  .footerMeta {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+
+  .footerValue {
+    font-size: 12px;
   }
 }
 
