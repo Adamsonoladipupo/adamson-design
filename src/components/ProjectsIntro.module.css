@@ -1,15 +1,14 @@
 
 .projectsIntro {
   --projects-ink: #1c1c1e;
-  --projects-blue: #455fbd;
-  --projects-line: #dedede;
+  --projects-blue: #455fef;
+  --projects-line: #d5d5d5;
   --projects-hover: #b5b5b5;
   --curve-depth: 0px;
 
   position: relative;
   z-index: 2;
   isolation: isolate;
-
   width: 100%;
   padding: 0 0 90px;
 
@@ -17,13 +16,12 @@
   background: #fff;
 }
 
-/* Animated white curve extending over the contact section */
+/* Curved lower edge for the contact-section transition */
 
 .projectsIntro::after {
   content: "";
   position: absolute;
   z-index: 3;
-
   left: -20%;
   bottom: calc(-1 * var(--curve-depth));
 
@@ -32,7 +30,6 @@
 
   border-radius: 50%;
   background: #fff;
-
   pointer-events: none;
 }
 
@@ -41,12 +38,11 @@
 .projectList {
   position: relative;
   z-index: 1;
-
   width: min(calc(100% - 64px), 1460px);
   margin: 0 auto;
 }
 
-/* Each project row */
+/* Project row */
 
 .projectRow {
   position: relative;
@@ -81,7 +77,6 @@
 .projectName {
   position: relative;
   z-index: 1;
-
   min-width: 0;
 
   font-size: clamp(42px, 5.4vw, 92px);
@@ -93,14 +88,13 @@
   transition: color 300ms ease;
 }
 
-/* Contribution */
+/* Desktop contribution */
 
 .projectContribution {
   position: relative;
   z-index: 1;
 
   justify-self: start;
-
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
@@ -110,12 +104,28 @@
   transition: color 300ms ease;
 }
 
+.projectYear {
+  display: none;
+}
+
+.projectMeta {
+  position: relative;
+  z-index: 1;
+  display: contents;
+}
+
 .projectRowHovered .projectName,
 .projectRowHovered .projectContribution {
   color: var(--projects-hover);
 }
 
-/* Cursor-following image */
+/* Hidden on desktop; shown on mobile */
+
+.mobileProjectImage {
+  display: none;
+}
+
+/* Cursor-following desktop image */
 
 .projectPreview {
   position: absolute;
@@ -126,7 +136,7 @@
   aspect-ratio: 1;
 
   overflow: hidden;
-  border-radius: 9px;
+  border-radius: 10px;
   background: #eae7e1;
 
   transform: translate(-50%, -50%);
@@ -144,12 +154,11 @@
   display: block;
   width: 100%;
   height: 100%;
-
   object-fit: cover;
   border-radius: inherit;
 }
 
-/* View circle stays above the image */
+/* Circular view cursor */
 
 .cursorView {
   position: absolute;
@@ -164,7 +173,7 @@
   border-radius: 50%;
 
   color: #fff;
-  background: #455fef;
+  background: var(--projects-blue);
 
   font-size: 14px;
   font-weight: 400;
@@ -206,7 +215,7 @@
   }
 }
 
-/* More work button */
+/* More work capsule */
 
 .moreWorkWrap {
   position: relative;
@@ -235,9 +244,8 @@
 
   color: var(--projects-ink);
   background: transparent;
-  font: inherit;
+  text-decoration: none;
 
-  cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 
   transition:
@@ -282,7 +290,6 @@
 .projectCount {
   position: relative;
   top: -0.25em;
-
   font-size: 9px;
   line-height: 1;
 }
@@ -344,7 +351,7 @@
   }
 }
 
-/* Mobile */
+/* Mobile: image, title, divider, contribution and year */
 
 @media (max-width: 600px) {
   .projectsIntro {
@@ -356,26 +363,88 @@
   }
 
   .projectList {
-    width: calc(100% - 40px);
+    width: calc(100% - 36px);
   }
 
   .projectRow {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    min-height: auto;
-    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    min-height: 0;
+    padding: 28px 0 30px;
+  }
+
+  .projectRow:last-child {
+    border-bottom: 1px solid var(--projects-line);
   }
 
   .projectName {
-    font-size: clamp(36px, 9vw, 52px);
-    line-height: 1.1;
+    order: 0;
+    font-size: clamp(34px, 8.5vw, 42px);
+    line-height: 1.12;
     letter-spacing: -0.06em;
+    margin-bottom: 16px;
+  }
+
+  /* Show the actual project image on mobile */
+
+  .mobileProjectImage {
+    order: 1;
+    display: block;
+
+    width: 100%;
+    aspect-ratio: 1 / 0.96;
+    overflow: hidden;
+
+    margin-bottom: 16px;
+    border-radius: 0;
+    background: #f0f0f0;
+  }
+
+  .mobileProjectImage img {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+
+    border-radius: inherit;
+  }
+
+  /* Divider and metadata row */
+
+  .projectMeta {
+    order: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    width: 100%;
+    padding-top: 14px;
+    border-top: 1px solid var(--projects-line);
   }
 
   .projectContribution {
-    font-size: 13px;
+    font-size: 14px;
+    line-height: 1.45;
     white-space: normal;
   }
+
+  .projectYear {
+    display: block;
+    flex: 0 0 auto;
+
+    font-size: 14px;
+    line-height: 1.45;
+    white-space: nowrap;
+  }
+
+  /* Cursor-following visuals are desktop-only */
 
   .projectPreview,
   .cursorView {
@@ -405,11 +474,16 @@
   }
 
   .projectRow {
-    padding: 25px 0;
+    padding: 24px 0 26px;
   }
 
   .projectName {
     font-size: 34px;
+  }
+
+  .projectContribution,
+  .projectYear {
+    font-size: 12px;
   }
 }
 

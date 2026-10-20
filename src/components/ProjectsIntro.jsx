@@ -1,5 +1,6 @@
 
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './ProjectsIntro.module.css'
 
 import imgGlidr from './assets/glidr.png'
@@ -12,45 +13,48 @@ const PROJECTS = [
   {
     name: 'Glidr',
     contribution: 'Design & Development',
+    year: '2025',
     href: 'https://shop-with-glidr.onrender.com/',
     image: imgGlidr,
   },
   {
     name: 'Saveliens',
     contribution: 'Product Design & Development',
+    year: '2025',
     href: 'https://saveliens.onrender.com/',
     image: imgSaveliens,
   },
   {
     name: 'Giftara',
     contribution: 'Product Design',
+    year: '2025',
     href: 'https://giftara.app/',
     image: imgGiftara,
   },
   {
     name: 'Swaply',
     contribution: 'UX/UI Design & Case Study',
+    year: '2025',
     href: 'https://www.behance.net/gallery/224400063/Swaply-Convert-crypto-withdraw-into-your-local-Bank',
     image: imgSwaply,
   },
   {
     name: 'EcoEarn',
     contribution: 'Product Design & Research',
+    year: '2025',
     href: 'https://www.behance.net/gallery/217668017/EcoEarn-App-(Case-Study)',
     image: imgEcoearn,
   },
 ]
 
 const INITIAL_VISIBLE = 3
-const LOAD_STEP = 3
 
 export default function ProjectsIntro() {
   const sectionRef = useRef(null)
-  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE)
   const [hoveredProject, setHoveredProject] = useState(null)
   const [previewPosition, setPreviewPosition] = useState({ x: 0, y: 0 })
 
-  // Update the curved lower edge as the section moves up the viewport.
+  // Preserve the curved section transition on desktop.
   useEffect(() => {
     const section = sectionRef.current
     if (!section) return
@@ -72,10 +76,7 @@ export default function ProjectsIntro() {
           ),
         )
 
-        section.style.setProperty(
-          '--curve-depth',
-          `${progress * 85}px`,
-        )
+        section.style.setProperty('--curve-depth', `${progress * 85}px`)
       })
     }
 
@@ -92,8 +93,7 @@ export default function ProjectsIntro() {
   }, [])
 
   const handleProjectMove = (event) => {
-    const row = event.currentTarget
-    const rect = row.getBoundingClientRect()
+    const rect = event.currentTarget.getBoundingClientRect()
 
     setPreviewPosition({
       x: event.clientX - rect.left,
@@ -101,8 +101,7 @@ export default function ProjectsIntro() {
     })
   }
 
-  const visibleProjects = PROJECTS.slice(0, visibleCount)
-  const hasMoreProjects = visibleCount < PROJECTS.length
+  const visibleProjects = PROJECTS.slice(0, INITIAL_VISIBLE)
 
   return (
     <section
@@ -135,10 +134,25 @@ export default function ProjectsIntro() {
                 {project.name}
               </span>
 
-              <span className={styles.projectContribution}>
-                {project.contribution}
+              {/* Always visible on mobile */}
+              <span className={styles.mobileProjectImage}>
+                <img
+                  src={project.image}
+                  alt={`${project.name} project preview`}
+                  loading="lazy"
+                />
               </span>
 
+              <span className={styles.projectMeta}>
+                <span className={styles.projectContribution}>
+                  {project.contribution}
+                </span>
+                <span className={styles.projectYear}>
+                  {project.year}
+                </span>
+              </span>
+
+              {/* Cursor-following preview for desktop */}
               {isHovered && (
                 <>
                   <span
@@ -173,27 +187,21 @@ export default function ProjectsIntro() {
         })}
       </div>
 
-      {hasMoreProjects && (
-        <div className={styles.moreWorkWrap}>
-          <button
-            type="button"
-            className={styles.moreWorkButton}
-            onClick={() => {
-              setVisibleCount((count) =>
-                Math.min(count + LOAD_STEP, PROJECTS.length),
-              )
-            }}
-          >
-            <span className={styles.moreWorkFill} aria-hidden="true" />
-            <span className={styles.moreWorkLabel}>
-              More work
-              <sup className={styles.projectCount}>
-                {PROJECTS.length - visibleCount}
-              </sup>
-            </span>
-          </button>
-        </div>
-      )}
+      <div className={styles.moreWorkWrap}>
+        <Link
+          to="/projects"
+          className={styles.moreWorkButton}
+          aria-label="View all projects"
+        >
+          <span className={styles.moreWorkFill} aria-hidden="true" />
+          <span className={styles.moreWorkLabel}>
+            More work
+            <sup className={styles.projectCount}>
+              {PROJECTS.length - INITIAL_VISIBLE}
+            </sup>
+          </span>
+        </Link>
+      </div>
     </section>
   )
 }
