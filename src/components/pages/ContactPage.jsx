@@ -6,6 +6,12 @@ import styles from './ContactPage.module.css'
 // Update this import to the portrait asset already used in your portfolio.
 import profileImage from '../../components/assets/adamson.jpg'
 
+const [isSending, setIsSending] = useState(false)
+
+const [form, setForm] = useState(INITIAL_FORM)
+const [status, setStatus] = useState('')
+const [isSending, setIsSending] = useState(false)
+
 const CONTACT_EMAIL = 'adamsonoladipupo@gmail.com'
 
 const SOCIAL_LINKS = [
