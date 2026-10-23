@@ -12,37 +12,37 @@ import imgEcoearn from './assets/Ecoearn.png'
 const PROJECTS = [
   {
     name: 'Glidr',
+    slug: 'glidr',
     contribution: 'Design & Development',
     year: '2025',
-    href: 'https://shop-with-glidr.onrender.com/',
     image: imgGlidr,
   },
   {
     name: 'Saveliens',
+    slug: 'saveliens',
     contribution: 'Product Design & Development',
     year: '2025',
-    href: 'https://saveliens.onrender.com/',
     image: imgSaveliens,
   },
   {
     name: 'Giftara',
+    slug: 'giftara',
     contribution: 'Product Design',
     year: '2025',
-    href: 'https://giftara.app/',
     image: imgGiftara,
   },
   {
     name: 'Swaply',
+    slug: 'swaply',
     contribution: 'UX/UI Design & Case Study',
     year: '2025',
-    href: 'https://www.behance.net/gallery/224400063/Swaply-Convert-crypto-withdraw-into-your-local-Bank',
     image: imgSwaply,
   },
   {
     name: 'EcoEarn',
+    slug: 'ecoearn',
     contribution: 'Product Design & Research',
     year: '2025',
-    href: 'https://www.behance.net/gallery/217668017/EcoEarn-App-(Case-Study)',
     image: imgEcoearn,
   },
 ]
@@ -52,9 +52,11 @@ const INITIAL_VISIBLE = 3
 export default function ProjectsIntro() {
   const sectionRef = useRef(null)
   const [hoveredProject, setHoveredProject] = useState(null)
-  const [previewPosition, setPreviewPosition] = useState({ x: 0, y: 0 })
+  const [previewPosition, setPreviewPosition] = useState({
+    x: 0,
+    y: 0,
+  })
 
-  // Preserve the curved section transition on desktop.
   useEffect(() => {
     const section = sectionRef.current
     if (!section) return
@@ -72,17 +74,23 @@ export default function ProjectsIntro() {
           0,
           Math.min(
             1,
-            (viewportHeight - rect.bottom) / (viewportHeight * 0.8),
+            (viewportHeight - rect.bottom) /
+              (viewportHeight * 0.8),
           ),
         )
 
-        section.style.setProperty('--curve-depth', `${progress * 85}px`)
+        section.style.setProperty(
+          '--curve-depth',
+          `${progress * 85}px`,
+        )
       })
     }
 
     updateCurve()
 
-    window.addEventListener('scroll', updateCurve, { passive: true })
+    window.addEventListener('scroll', updateCurve, {
+      passive: true,
+    })
     window.addEventListener('resize', updateCurve)
 
     return () => {
@@ -101,7 +109,10 @@ export default function ProjectsIntro() {
     })
   }
 
-  const visibleProjects = PROJECTS.slice(0, INITIAL_VISIBLE)
+  const visibleProjects = PROJECTS.slice(
+    0,
+    INITIAL_VISIBLE,
+  )
 
   return (
     <section
@@ -112,29 +123,31 @@ export default function ProjectsIntro() {
     >
       <div className={styles.projectList}>
         {visibleProjects.map((project) => {
-          const isHovered = hoveredProject === project.name
+          const isHovered =
+            hoveredProject === project.name
 
           return (
-            <a
+            <Link
               key={project.name}
-              href={project.href}
-              target="_blank"
-              rel="noreferrer"
+              to={`/work/${project.slug}`}
               className={`${styles.projectRow} ${
-                isHovered ? styles.projectRowHovered : ''
+                isHovered
+                  ? styles.projectRowHovered
+                  : ''
               }`}
               onMouseEnter={(event) => {
                 setHoveredProject(project.name)
                 handleProjectMove(event)
               }}
               onMouseMove={handleProjectMove}
-              onMouseLeave={() => setHoveredProject(null)}
+              onMouseLeave={() =>
+                setHoveredProject(null)
+              }
             >
               <span className={styles.projectName}>
                 {project.name}
               </span>
 
-              {/* Always visible on mobile */}
               <span className={styles.mobileProjectImage}>
                 <img
                   src={project.image}
@@ -144,15 +157,17 @@ export default function ProjectsIntro() {
               </span>
 
               <span className={styles.projectMeta}>
-                <span className={styles.projectContribution}>
+                <span
+                  className={styles.projectContribution}
+                >
                   {project.contribution}
                 </span>
+
                 <span className={styles.projectYear}>
                   {project.year}
                 </span>
               </span>
 
-              {/* Cursor-following preview for desktop */}
               {isHovered && (
                 <>
                   <span
@@ -182,7 +197,7 @@ export default function ProjectsIntro() {
                   </span>
                 </>
               )}
-            </a>
+            </Link>
           )
         })}
       </div>
@@ -193,7 +208,11 @@ export default function ProjectsIntro() {
           className={styles.moreWorkButton}
           aria-label="View all projects"
         >
-          <span className={styles.moreWorkFill} aria-hidden="true" />
+          <span
+            className={styles.moreWorkFill}
+            aria-hidden="true"
+          />
+
           <span className={styles.moreWorkLabel}>
             More work
             <sup className={styles.projectCount}>

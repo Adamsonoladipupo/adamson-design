@@ -1,5 +1,6 @@
 
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './Projects.module.css'
 
 import imgGlidr from './assets/glidr.png'
@@ -11,42 +12,42 @@ import imgEcoearn from './assets/Ecoearn.png'
 const PROJECTS = [
   {
     name: 'Glidr',
+    slug: 'glidr',
     contribution: 'Design & Development',
     industry: 'E-commerce',
     categories: ['Design', 'Development'],
-    href: 'https://shop-with-glidr.onrender.com/',
     image: imgGlidr,
   },
   {
     name: 'Saveliens',
+    slug: 'saveliens',
     contribution: 'Product Design',
     industry: 'Lifestyle & E-commerce',
     categories: ['Design'],
-    href: 'https://saveliens.onrender.com/',
     image: imgSaveliens,
   },
   {
     name: 'Giftara',
+    slug: 'giftara',
     contribution: 'Product Design',
     industry: 'Gifting & E-commerce',
     categories: ['Design'],
-    href: 'https://giftara.app/',
     image: imgGiftara,
   },
   {
     name: 'Swaply',
+    slug: 'swaply',
     contribution: 'UX/UI Design',
     industry: 'Fintech & Cryptocurrency',
     categories: ['Design'],
-    href: 'https://www.behance.net/gallery/224400063/Swaply-Convert-crypto-withdraw-into-your-local-Bank',
     image: imgSwaply,
   },
   {
     name: 'EcoEarn',
+    slug: 'ecoearn',
     contribution: 'Product Design',
     industry: 'Sustainability & Rewards',
     categories: ['Design'],
-    href: 'https://www.behance.net/gallery/217668017/EcoEarn-App-(Case-Study)',
     image: imgEcoearn,
   },
 ]
@@ -96,7 +97,9 @@ export default function Projects() {
               key={filter}
               type="button"
               className={`${styles.filterButton} ${
-                activeFilter === filter ? styles.activeFilter : ''
+                activeFilter === filter
+                  ? styles.activeFilter
+                  : ''
               }`}
               onClick={() => {
                 setActiveFilter(filter)
@@ -117,29 +120,34 @@ export default function Projects() {
           </div>
 
           {filteredProjects.map((project) => {
-            const isHovered = hoveredProject === project.name
+            const isHovered =
+              hoveredProject === project.name
 
             return (
-              <a
+              <Link
                 key={project.name}
-                href={project.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                to={`/work/${project.slug}`}
                 className={`${styles.projectRow} ${
-                  isHovered ? styles.projectRowHovered : ''
+                  isHovered
+                    ? styles.projectRowHovered
+                    : ''
                 }`}
                 onMouseEnter={(event) => {
                   setHoveredProject(project.name)
                   handleProjectMove(event)
                 }}
                 onMouseMove={handleProjectMove}
-                onMouseLeave={() => setHoveredProject(null)}
+                onMouseLeave={() =>
+                  setHoveredProject(null)
+                }
               >
                 <span className={styles.projectName}>
                   {project.name}
                 </span>
 
-                <span className={styles.projectContribution}>
+                <span
+                  className={styles.projectContribution}
+                >
                   {project.contribution}
                 </span>
 
@@ -147,7 +155,6 @@ export default function Projects() {
                   {project.industry}
                 </span>
 
-                {/* Always visible on mobile */}
                 <span className={styles.mobileProjectImage}>
                   <img
                     src={project.image}
@@ -156,7 +163,6 @@ export default function Projects() {
                   />
                 </span>
 
-                {/* Cursor-following preview on desktop */}
                 {isHovered && (
                   <>
                     <span
@@ -186,7 +192,7 @@ export default function Projects() {
                     </span>
                   </>
                 )}
-              </a>
+              </Link>
             )
           })}
         </div>

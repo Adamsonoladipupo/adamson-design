@@ -1,13 +1,17 @@
 
 import { useEffect, useState } from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom'
 
 import LandingPage from './components/pages/LandingPage.jsx'
 import AboutPage from './components/pages/AboutPage.jsx'
 import ProjectsPage from './components/pages/ProjectsPage.jsx'
-
-import ContactPage from './components/pages/ContactPage'
-
+import ContactPage from './components/pages/ContactPage.jsx'
+import Glidr from './components/pages/projects/Glidr.jsx'
 
 function applyTheme(isDark) {
   const root = document.documentElement
@@ -76,15 +80,30 @@ export default function App() {
 
           <Route
             path="/projects"
-            element={<ProjectsPage dark={dark} toggleDark={toggleDark} />}
-          />
-          <Route 
-            path="/contact"  
-            element={<ContactPage />} 
+            element={
+              <ProjectsPage
+                dark={dark}
+                toggleDark={toggleDark}
+              />
+            }
           />
 
+          <Route
+            path="/contact"
+            element={<ContactPage />}
+          />
 
-          <Route path="*" element={<Navigate to="/" replace />} />
+          {/* Individual project detail pages */}
+          <Route
+            path="/work/glidr"
+            element={<Glidr />}
+          />
+
+          {/* Add more project routes as their pages are built. */}
+          <Route
+            path="*"
+            element={<Navigate to="/" replace />}
+          />
         </Routes>
       </BrowserRouter>
     </div>
