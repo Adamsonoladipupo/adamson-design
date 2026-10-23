@@ -11,15 +11,15 @@ const CONTACT_EMAIL = 'your-email@example.com'
 const SOCIAL_LINKS = [
   {
     label: 'Behance',
-    href: 'https://www.behance.net/',
+    href: 'https://www.behance.net/abdulwahabadamson',
   },
   {
     label: 'LinkedIn',
-    href: 'https://www.linkedin.com/',
+    href: 'https://www.linkedin.com/in/abdulwahabadamson/',
   },
   {
     label: 'GitHub',
-    href: 'https://github.com/',
+    href: 'https://github.com/Adamsonoladipupo',
   },
 ]
 

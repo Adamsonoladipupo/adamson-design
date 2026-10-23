@@ -25,37 +25,11 @@ export default function Contact() {
   const sectionRef = useRef(null)
   const [isRevealed, setIsRevealed] = useState(false)
 
-  // useEffect(() => {
-  //   const section = sectionRef.current
-  //   if (!section) return
-
-  //   if (!('IntersectionObserver' in window)) {
-  //     setIsRevealed(true)
-  //     return
-  //   }
-
-  //   const observer = new IntersectionObserver(
-  //     ([entry]) => {
-  //       if (entry.isIntersecting) {
-  //         setIsRevealed(true)
-  //         observer.unobserve(section)
-  //       }
-  //     },
-  //     { threshold: 0.08 },
-  //   )
-
-  //   observer.observe(section)
-
-  //   return () => observer.disconnect()
-  // }, [])
-
 
 useEffect(() => {
   const section = sectionRef.current
   if (!section) return
 
-  // Safety fallback: reveal the section even if the
-  // browser doesn't trigger IntersectionObserver.
   const fallback = window.setTimeout(() => {
     setIsRevealed(true)
   }, 2000)
@@ -107,7 +81,7 @@ useEffect(() => {
           </h2>
 
           <a
-            href="mailto:YOUR_EMAIL@example.com"
+            href="mailto:adamsonoladipupo@gmail.com"
             className={styles.contactArrow}
             aria-label="Email me"
           >
@@ -116,7 +90,7 @@ useEffect(() => {
 
           <div className={styles.contactDivider}>
             <a
-              href="mailto:YOUR_EMAIL@example.com"
+              href="mailto:adamsonoladipupo@gmail.com"
               className={styles.getInTouchButton}
             >
               <span className={styles.buttonFill} aria-hidden="true" />
@@ -126,10 +100,10 @@ useEffect(() => {
 
           <div className={styles.contactLinks}>
             <a
-              href="mailto:YOUR_EMAIL@example.com"
+              href="mailto:adamsonoladipupo@gmail.com"
               className={styles.contactPill}
             >
-              YOUR_EMAIL@example.com
+              adamsonoladipupo@gmail.com
             </a>
 
             <a
