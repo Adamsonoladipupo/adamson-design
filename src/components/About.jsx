@@ -5,15 +5,15 @@ import profileImage from './assets/adamson.jpg'
 function GlobeIcon() {
   return (
     <svg
-      viewBox="0 0 48 48"
+      viewBox="0 0 100 100"
       fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
       aria-hidden="true"
+      className={styles.globeIcon}
     >
-      <circle cx="24" cy="24" r="16" />
-      <ellipse cx="24" cy="24" rx="8" ry="16" />
-      <path d="M9 24h30M12 16h24M12 32h24" />
+      <circle cx="50" cy="50" r="43" />
+      <ellipse cx="50" cy="50" rx="20" ry="43" />
+      <ellipse cx="50" cy="50" rx="36" ry="43" />
+      <path d="M7 50h86M14 30h72M14 70h72" />
     </svg>
   )
 }
@@ -33,7 +33,11 @@ export default function About() {
           <div className={styles.globeDivider}>
             <span className={styles.dividerLine} />
 
-            <div className={styles.globeCircle}>
+            <div
+              className={styles.globeCircle}
+              aria-label="Rotating globe"
+              role="img"
+            >
               <GlobeIcon />
             </div>
           </div>
@@ -83,9 +87,11 @@ export default function About() {
               <h3>Design</h3>
 
               <p>
-                I create clean, considered interfaces that balance visual
-                appeal with usability, helping ideas communicate clearly
-                and confidently.
+                With over five years of design experience, I create
+                thoughtful, user-centred interfaces that balance visual
+                clarity, usability, and business goals. Every decision
+                is intentional, from the overall experience to the
+                smallest interaction.
               </p>
             </article>
 
@@ -96,9 +102,11 @@ export default function About() {
               <h3>Development</h3>
 
               <p>
-                I build responsive websites with attention to performance,
-                accessibility, and the details that make each experience
-                feel smooth and intuitive.
+                With over a year of development experience, I turn
+                concepts into responsive, functional digital products.
+                I focus on clean implementation, accessibility, and
+                performance to ensure that great designs work just as
+                well as they look.
               </p>
             </article>
 
@@ -106,27 +114,21 @@ export default function About() {
               <span className={styles.serviceNumber}>03</span>
               <div className={styles.serviceRule} />
 
-              <h3>
-                <span
-                  className={styles.serviceSpark}
-                  aria-hidden="true"
-                >
-                  ✦
-                </span>
-                The full package
-              </h3>
+              <h3>The full package</h3>
 
               <p>
-                From the first idea to the finished website, I bring design
-                and development together to create a consistent, polished
-                digital experience.
+                Bringing design and development together allows me to
+                work across multiple stages of the digital product
+                lifecycle. From shaping an idea and refining the user
+                experience to building the final product, I help create
+                cohesive experiences from start to finish.
               </p>
             </article>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3: ABOUT MY APPROACH */}
+      {/* SECTION 3: EXPERIENCE & APPROACH */}
       <section className={styles.storySection}>
         <div className={styles.storyInner}>
           <div className={styles.storyImageWrap}>
@@ -139,10 +141,6 @@ export default function About() {
           </div>
 
           <div className={styles.storyCopy}>
-            <span className={styles.storyMark} aria-hidden="true">
-              A<span>✳</span>
-            </span>
-
             <p className={styles.eyebrow}>
               A LITTLE ABOUT MY APPROACH
             </p>
@@ -154,11 +152,25 @@ export default function About() {
             </h2>
 
             <p className={styles.storyDescription}>
-              I enjoy bringing ideas to life through a balance of visual
-              design, thoughtful structure, and clean implementation.
-              I pay attention to the details that make a digital experience
-              feel intuitive, from its overall layout to the smallest
-              interaction.
+              With over five years of experience in design and more
+              than a year in development, I bring a broader perspective
+              to building digital products. I understand how a product
+              should look, how it should feel, and how it needs to work.
+            </p>
+
+            <p className={styles.storyDescription}>
+              This combination allows me to contribute across multiple
+              stages of the product development lifecycle—from research,
+              user flows, and interface design to responsive development
+              and implementation. Rather than treating design and code
+              as separate processes, I connect the two to make better
+              decisions, solve problems more effectively, and create
+              experiences that are both purposeful and practical.
+            </p>
+
+            <p className={styles.storyClosing}>
+              I don't just design how a product looks. I help bring
+              the entire experience to life.
             </p>
           </div>
         </div>

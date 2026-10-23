@@ -40,6 +40,8 @@
   letter-spacing: -0.075em;
 }
 
+/* Revolving globe divider */
+
 .globeDivider {
   position: relative;
   display: flex;
@@ -66,14 +68,33 @@
   aspect-ratio: 1;
   margin-right: 16%;
   place-items: center;
+  overflow: hidden;
   border-radius: 50%;
   background: var(--about-blue);
   color: #fff;
 }
 
-.globeCircle svg {
-  width: 38%;
-  height: 38%;
+.globeIcon {
+  display: block;
+  width: 58%;
+  height: 58%;
+  overflow: visible;
+  stroke: currentColor;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform-origin: center;
+  animation: globeRotate 12s linear infinite;
+}
+
+@keyframes globeRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .introContent {
@@ -188,13 +209,7 @@
   line-height: 1.9;
 }
 
-.serviceSpark {
-  flex-shrink: 0;
-  color: var(--about-blue);
-  font-size: 1.05em;
-}
-
-/* ABOUT MY APPROACH */
+/* ABOUT MY EXPERIENCE & APPROACH */
 
 .storySection {
   padding: clamp(90px, 12vw, 180px) 0;
@@ -225,23 +240,7 @@
   max-width: 570px;
 }
 
-.storyMark {
-  display: grid;
-  width: 76px;
-  height: 76px;
-  margin-bottom: 50px;
-  place-items: center;
-  border: 1px solid var(--about-line);
-  border-radius: 50%;
-  color: var(--about-muted);
-  font-size: 27px;
-  font-weight: 600;
-}
-
-.storyMark span {
-  margin-left: 2px;
-  color: var(--about-blue);
-}
+/* Removed the decorative A ✳ circle */
 
 .eyebrow {
   margin: 0 0 20px;
@@ -262,9 +261,19 @@
 
 .storyDescription {
   max-width: 530px;
-  margin: 34px 0 0;
+  margin: 25px 0 0;
   font-size: 16px;
   line-height: 1.9;
+}
+
+.storyClosing {
+  max-width: 530px;
+  margin: 26px 0 0;
+  color: var(--about-blue);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.8;
+  letter-spacing: -0.025em;
 }
 
 /* TABLET */
@@ -316,8 +325,8 @@
     font-size: 14px;
   }
 
-  .storyMark {
-    margin-bottom: 35px;
+  .storyClosing {
+    font-size: 15px;
   }
 
   .servicesGrid {
@@ -367,6 +376,11 @@
   .globeCircle {
     width: 112px;
     margin-right: 8%;
+  }
+
+  .globeIcon {
+    width: 60%;
+    height: 60%;
   }
 
   .introContent {
@@ -431,7 +445,7 @@
 
   .storyInner {
     grid-template-columns: 1fr;
-    gap: 42px;
+    gap: 35px;
   }
 
   .storyImage {
@@ -441,13 +455,6 @@
 
   .storyCopy {
     max-width: none;
-  }
-
-  .storyMark {
-    width: 58px;
-    height: 58px;
-    margin-bottom: 30px;
-    font-size: 22px;
   }
 
   .eyebrow {
@@ -463,9 +470,21 @@
     font-size: 15px;
     line-height: 1.8;
   }
+
+  .storyClosing {
+    margin-top: 22px;
+    font-size: 16px;
+    line-height: 1.8;
+  }
 }
 
+/* REDUCED MOTION */
+
 @media (prefers-reduced-motion: reduce) {
+  .globeIcon {
+    animation: none;
+  }
+
   .serviceRule {
     transition: none;
   }
