@@ -289,10 +289,7 @@ export default function Navbar() {
             </div>
 
             {/*
-            <div className={styles.drawerFooter}>
-              <span>© Abdulwahab Adamson</span>
-              <span>Available for opportunities</span>
-            </div>
+
             */}
           </nav>
         </div>
