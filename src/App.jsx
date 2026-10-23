@@ -6,6 +6,9 @@ import LandingPage from './components/pages/LandingPage.jsx'
 import AboutPage from './components/pages/AboutPage.jsx'
 import ProjectsPage from './components/pages/ProjectsPage.jsx'
 
+import ContactPage from './components/pages/ContactPage'
+
+
 function applyTheme(isDark) {
   const root = document.documentElement
   const styleId = '__theme-no-transition__'
@@ -75,6 +78,11 @@ export default function App() {
             path="/projects"
             element={<ProjectsPage dark={dark} toggleDark={toggleDark} />}
           />
+          <Route 
+            path="/contact"  
+            element={<ContactPage />} 
+          />
+
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

@@ -1,11 +1,11 @@
-
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './Navbar.module.css'
 
 const LINKS = [
-  { label: 'Projects', href: '#projects' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 const SOCIAL_LINKS = [
@@ -65,14 +65,17 @@ export default function Navbar() {
     }, DRAWER_DURATION)
   }, [open, closing])
 
-  // Transform the navigation when scrolling.
+  // Update the navigation when scrolling.
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > SCROLL_THRESHOLD)
     }
 
     handleScroll()
-    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    window.addEventListener('scroll', handleScroll, {
+      passive: true,
+    })
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
@@ -117,7 +120,9 @@ export default function Navbar() {
 
   // Clear the pending animation timer when the component unmounts.
   useEffect(() => {
-    return () => window.clearTimeout(closeTimer.current)
+    return () => {
+      window.clearTimeout(closeTimer.current)
+    }
   }, [])
 
   const headerClasses = [
@@ -131,8 +136,9 @@ export default function Navbar() {
   return (
     <>
       <header className={headerClasses}>
-        <a
-          href="#home"
+        {/* Brand / Home */}
+        <Link
+          to="/"
           className={styles.brand}
           aria-label="Abdulwahab Adamson — home"
         >
@@ -145,32 +151,38 @@ export default function Navbar() {
               © Abdulwahab Adamson
             </span>
           </span>
-        </a>
+        </Link>
 
+        {/* Desktop Navigation */}
         <nav
           className={styles.desktopNav}
           aria-label="Main navigation"
           aria-hidden={scrolled || undefined}
         >
           {LINKS.map((link, index) => (
-            <a
+            <Link
               key={link.href}
-              href={link.href}
+              to={link.href}
               className={styles.desktopLink}
               style={{ '--link-index': index }}
               tabIndex={scrolled ? -1 : 0}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
+        {/* Mobile Menu Button */}
         <button
           ref={menuButtonRef}
           type="button"
           className={styles.menuButton}
-          onClick={open ? closeMenu : openMenu}
-          aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+          onClick={open && !closing ? closeMenu : openMenu}
+          aria-label={
+            open && !closing
+              ? 'Close navigation menu'
+              : 'Open navigation menu'
+          }
           aria-expanded={open && !closing}
           aria-controls="mobile-navigation"
         >
@@ -178,12 +190,14 @@ export default function Navbar() {
         </button>
       </header>
 
+      {/* Mobile Navigation Drawer */}
       {open && (
         <div
           className={`${styles.menuLayer} ${
             closing ? styles.menuLayerClosing : ''
           }`}
         >
+          {/* Backdrop */}
           <button
             type="button"
             className={styles.backdrop}
@@ -201,6 +215,7 @@ export default function Navbar() {
             aria-hidden={closing}
             inert={closing}
           >
+            {/* Drawer Header */}
             <div className={styles.drawerTop}>
               <span className={styles.drawerEyebrow}>
                 NAVIGATION
@@ -218,11 +233,12 @@ export default function Navbar() {
               </button>
             </div>
 
+            {/* Internal Navigation Links */}
             <div className={styles.drawerLinks}>
               {LINKS.map((link, index) => (
-                <a
+                <Link
                   key={link.href}
-                  href={link.href}
+                  to={link.href}
                   className={styles.drawerLink}
                   style={{ '--link-index': index }}
                   tabIndex={closing ? -1 : 0}
@@ -236,18 +252,21 @@ export default function Navbar() {
                     {link.label}
                   </span>
 
-                  <span className={styles.linkArrow} aria-hidden="true">
+                  <span
+                    className={styles.linkArrow}
+                    aria-hidden="true"
+                  >
                     ↗
                   </span>
-                </a>
+                </Link>
               ))}
             </div>
 
+            {/* Social Links */}
             <div className={styles.drawerSocials}>
               <span className={styles.drawerEyebrow}>
                 SOCIALS
               </span>
-
 
               <div className={styles.socialLinks}>
                 {SOCIAL_LINKS.map((social) => (
@@ -260,16 +279,21 @@ export default function Navbar() {
                     tabIndex={closing ? -1 : 0}
                   >
                     {social.label}
-                    <span aria-hidden="true">↗</span>
+
+                    <span aria-hidden="true">
+                      ↗
+                    </span>
                   </a>
                 ))}
               </div>
             </div>
 
-            {/* <div className={styles.drawerFooter}>
+            {/*
+            <div className={styles.drawerFooter}>
               <span>© Abdulwahab Adamson</span>
               <span>Available for opportunities</span>
-            </div> */}
+            </div>
+            */}
           </nav>
         </div>
       )}

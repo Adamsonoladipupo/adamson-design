@@ -21,7 +21,7 @@ function GlobeIcon() {
 export default function About() {
   return (
     <div className={styles.aboutPage}>
-      {/* Section 1: Introduction */}
+      {/* SECTION 1: INTRODUCTION */}
       <section className={styles.introSection}>
         <div className={styles.introInner}>
           <h1 className={styles.heroTitle}>
@@ -32,6 +32,7 @@ export default function About() {
 
           <div className={styles.globeDivider}>
             <span className={styles.dividerLine} />
+
             <div className={styles.globeCircle}>
               <GlobeIcon />
             </div>
@@ -67,43 +68,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Section 2: About and creative approach */}
-      <section className={styles.storySection}>
-        <div className={styles.storyInner}>
-          <div className={styles.storyImageWrap}>
-            <img
-              src={profileImage}
-              alt="Adamson"
-              className={styles.storyImage}
-              loading="lazy"
-            />
-          </div>
-
-          <div className={styles.storyCopy}>
-            <span className={styles.juryMark} aria-hidden="true">
-              A<span>✳</span>
-            </span>
-
-            <p className={styles.eyebrow}>A LITTLE ABOUT MY APPROACH</p>
-
-            <h2 className={styles.storyTitle}>
-              Design meets
-              <br />
-              development.
-            </h2>
-
-            <p className={styles.storyDescription}>
-              I enjoy bringing ideas to life through a balance of visual
-              design, thoughtful structure, and clean implementation.
-              I pay attention to the details that make a digital experience
-              feel intuitive, from its overall layout to the smallest
-              interaction.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 3: Services */}
+      {/* SECTION 2: SERVICES */}
       <section className={styles.servicesSection}>
         <div className={styles.servicesInner}>
           <h2 className={styles.servicesHeading}>
@@ -142,7 +107,10 @@ export default function About() {
               <div className={styles.serviceRule} />
 
               <h3>
-                <span className={styles.serviceSpark} aria-hidden="true">
+                <span
+                  className={styles.serviceSpark}
+                  aria-hidden="true"
+                >
                   ✦
                 </span>
                 The full package
@@ -154,6 +122,44 @@ export default function About() {
                 digital experience.
               </p>
             </article>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3: ABOUT MY APPROACH */}
+      <section className={styles.storySection}>
+        <div className={styles.storyInner}>
+          <div className={styles.storyImageWrap}>
+            <img
+              src={profileImage}
+              alt="Adamson"
+              className={styles.storyImage}
+              loading="lazy"
+            />
+          </div>
+
+          <div className={styles.storyCopy}>
+            <span className={styles.storyMark} aria-hidden="true">
+              A<span>✳</span>
+            </span>
+
+            <p className={styles.eyebrow}>
+              A LITTLE ABOUT MY APPROACH
+            </p>
+
+            <h2 className={styles.storyTitle}>
+              Design meets
+              <br />
+              development.
+            </h2>
+
+            <p className={styles.storyDescription}>
+              I enjoy bringing ideas to life through a balance of visual
+              design, thoughtful structure, and clean implementation.
+              I pay attention to the details that make a digital experience
+              feel intuitive, from its overall layout to the smallest
+              interaction.
+            </p>
           </div>
         </div>
       </section>
