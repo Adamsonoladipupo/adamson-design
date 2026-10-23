@@ -3,14 +3,8 @@ import { useState } from 'react'
 import Navbar from '../../components/Navbar'
 import styles from './ContactPage.module.css'
 
-// Update this import to the portrait asset already used in your portfolio.
+// Keep using your existing portrait asset.
 import profileImage from '../../components/assets/adamson.jpg'
-
-const [isSending, setIsSending] = useState(false)
-
-const [form, setForm] = useState(INITIAL_FORM)
-const [status, setStatus] = useState('')
-const [isSending, setIsSending] = useState(false)
 
 const CONTACT_EMAIL = 'adamsonoladipupo@gmail.com'
 
@@ -89,6 +83,19 @@ function ContactField({
           value={value}
           onChange={onChange}
           required={required}
+          maxLength={
+            name === 'name'
+              ? 100
+              : name === 'email'
+                ? 254
+                : name === 'organization'
+                  ? 120
+                  : name === 'services'
+                    ? 200
+                    : name === 'message'
+                      ? 5000
+                      : undefined
+          }
           autoComplete={
             name === 'name'
               ? 'name'
@@ -108,6 +115,8 @@ function ContactField({
 export default function ContactPage() {
   const [form, setForm] = useState(INITIAL_FORM)
   const [status, setStatus] = useState('')
+  const [statusType, setStatusType] = useState('')
+  const [isSending, setIsSending] = useState(false)
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -117,34 +126,57 @@ export default function ContactPage() {
       [name]: value,
     }))
 
-    if (status) setStatus('')
+    if (status) {
+      setStatus('')
+      setStatusType('')
+    }
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
 
-    const subject = encodeURIComponent(
-      `Portfolio enquiry from ${form.name}`,
-    )
+    if (isSending) return
 
-    const body = encodeURIComponent(
-      [
-        `Name: ${form.name}`,
-        `Email: ${form.email}`,
-        `Organization: ${form.organization || 'Not provided'}`,
-        `Services: ${form.services || 'Not specified'}`,
-        '',
-        'Message:',
-        form.message,
-      ].join('\n'),
-    )
+    setIsSending(true)
+    setStatus('')
+    setStatusType('')
 
-    window.location.href =
-      `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...form,
+          website: '',
+        }),
+      })
 
-    setStatus(
-      'Your email app should open with your message. Send the email there to complete your enquiry.',
-    )
+      const result = await response.json().catch(() => ({}))
+
+      if (!response.ok) {
+        throw new Error(
+          result.error ||
+            'Your message could not be sent. Please try again.',
+        )
+      }
+
+      setStatus(
+        'Thanks for reaching out! Your message has been sent successfully.',
+      )
+      setStatusType('success')
+      setForm({ ...INITIAL_FORM })
+    } catch (error) {
+      setStatus(
+        error instanceof Error
+          ? error.message
+          : `Something went wrong. Please try again or email me directly at ${CONTACT_EMAIL}.`,
+      )
+      setStatusType('error')
+    } finally {
+      setIsSending(false)
+    }
   }
 
   return (
@@ -225,6 +257,22 @@ export default function ContactPage() {
                 className={styles.contactForm}
                 onSubmit={handleSubmit}
               >
+                {/* Hidden honeypot field for basic spam protection */}
+                <div className={styles.honeypot} aria-hidden="true">
+                  <label htmlFor="website">
+                    Leave this field empty
+                  </label>
+                  <input
+                    id="website"
+                    name="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value=""
+                    onChange={() => {}}
+                  />
+                </div>
+
                 <ContactField
                   number="01"
                   label="What's your name?"
@@ -279,13 +327,23 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     className={styles.submitButton}
+                    disabled={isSending}
+                    aria-busy={isSending}
                   >
-                    Send it!
+                    {isSending ? 'Sending…' : 'Send it!'}
                   </button>
                 </div>
 
                 {status && (
-                  <p className={styles.formStatus} role="status">
+                  <p
+                    className={`${styles.formStatus} ${
+                      statusType === 'success'
+                        ? styles.statusSuccess
+                        : styles.statusError
+                    }`}
+                    role="status"
+                    aria-live="polite"
+                  >
                     {status}
                   </p>
                 )}
