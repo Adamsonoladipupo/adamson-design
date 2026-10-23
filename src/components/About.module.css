@@ -40,7 +40,7 @@
   letter-spacing: -0.075em;
 }
 
-/* Revolving globe divider */
+/* REVOLVING GLOBE */
 
 .globeDivider {
   position: relative;
@@ -64,7 +64,7 @@
   position: relative;
   z-index: 1;
   display: grid;
-  width: clamp(125px, 11vw, 190px);
+  width: clamp(90px, 8vw, 135px);
   aspect-ratio: 1;
   margin-right: 16%;
   place-items: center;
@@ -84,7 +84,7 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   transform-origin: center;
-  animation: globeRotate 12s linear infinite;
+  animation: globeRotate 20s linear infinite;
 }
 
 @keyframes globeRotate {
@@ -96,6 +96,8 @@
     transform: rotate(360deg);
   }
 }
+
+/* INTRODUCTION COPY */
 
 .introContent {
   display: grid;
@@ -202,6 +204,17 @@
   letter-spacing: -0.055em;
 }
 
+.fullPackageTitle {
+  white-space: nowrap;
+}
+
+.serviceSpark {
+  display: inline-block;
+  flex-shrink: 0;
+  color: var(--about-blue);
+  font-size: 1.05em;
+}
+
 .service p {
   max-width: 430px;
   margin: 0;
@@ -209,7 +222,7 @@
   line-height: 1.9;
 }
 
-/* ABOUT MY EXPERIENCE & APPROACH */
+/* EXPERIENCE & APPROACH */
 
 .storySection {
   padding: clamp(90px, 12vw, 180px) 0;
@@ -239,8 +252,6 @@
 .storyCopy {
   max-width: 570px;
 }
-
-/* Removed the decorative A ✳ circle */
 
 .eyebrow {
   margin: 0 0 20px;
@@ -340,6 +351,10 @@
   .service p {
     font-size: 14px;
   }
+
+  .fullPackageTitle {
+    white-space: normal;
+  }
 }
 
 /* MOBILE */
@@ -374,7 +389,7 @@
   }
 
   .globeCircle {
-    width: 112px;
+    width: 88px;
     margin-right: 8%;
   }
 
@@ -439,6 +454,10 @@
     font-size: 15px;
   }
 
+  .fullPackageTitle {
+    white-space: normal;
+  }
+
   .storySection {
     padding: 75px 0 85px;
   }
@@ -478,7 +497,7 @@
   }
 }
 
-/* REDUCED MOTION */
+/* ACCESSIBILITY: REDUCED MOTION */
 
 @media (prefers-reduced-motion: reduce) {
   .globeIcon {

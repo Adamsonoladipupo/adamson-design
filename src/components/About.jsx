@@ -35,8 +35,8 @@ export default function About() {
 
             <div
               className={styles.globeCircle}
-              aria-label="Rotating globe"
               role="img"
+              aria-label="Rotating globe"
             >
               <GlobeIcon />
             </div>
@@ -114,7 +114,15 @@ export default function About() {
               <span className={styles.serviceNumber}>03</span>
               <div className={styles.serviceRule} />
 
-              <h3>The full package</h3>
+              <h3 className={styles.fullPackageTitle}>
+                <span
+                  className={styles.serviceSpark}
+                  aria-hidden="true"
+                >
+                  ✦
+                </span>
+                The full package
+              </h3>
 
               <p>
                 Bringing design and development together allows me to
@@ -160,7 +168,7 @@ export default function About() {
 
             <p className={styles.storyDescription}>
               This combination allows me to contribute across multiple
-              stages of the product development lifecycle—from research,
+              stages of the product development lifecycle, from research,
               user flows, and interface design to responsive development
               and implementation. Rather than treating design and code
               as separate processes, I connect the two to make better
@@ -168,10 +176,6 @@ export default function About() {
               experiences that are both purposeful and practical.
             </p>
 
-            <p className={styles.storyClosing}>
-              I don't just design how a product looks. I help bring
-              the entire experience to life.
-            </p>
           </div>
         </div>
       </section>
