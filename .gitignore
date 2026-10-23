@@ -8,6 +8,8 @@ dist-ssr/
 # ── Environment variable files ────────────────────────────
 # All .env files are secrets — never commit them.
 .env
+.env.*
+!.env.example
 .env.local
 .env.development
 .env.development.local

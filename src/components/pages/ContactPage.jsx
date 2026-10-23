@@ -6,7 +6,7 @@ import styles from './ContactPage.module.css'
 // Update this import to the portrait asset already used in your portfolio.
 import profileImage from '../../components/assets/adamson.jpg'
 
-const CONTACT_EMAIL = 'your-email@example.com'
+const CONTACT_EMAIL = 'adamsonoladipupo@gmail.com'
 
 const SOCIAL_LINKS = [
   {

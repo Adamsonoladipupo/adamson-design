@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react'
 import styles from './Footer.module.css'
 
 const SOCIALS = [
-  { label: 'Behance', href: 'https://www.behance.net/' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
-  { label: 'GitHub', href: 'https://github.com/' },
+  { label: 'Behance', href: 'https://www.behance.net/abdulwahabadamson' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abdulwahabadamson/' },
+  { label: 'GitHub', href: 'https://github.com/Adamsonoladipupo' },
 ]
 
 function getLocalTime() {
