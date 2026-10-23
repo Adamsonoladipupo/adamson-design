@@ -25,29 +25,66 @@ export default function Contact() {
   const sectionRef = useRef(null)
   const [isRevealed, setIsRevealed] = useState(false)
 
-  useEffect(() => {
-    const section = sectionRef.current
-    if (!section) return
+  // useEffect(() => {
+  //   const section = sectionRef.current
+  //   if (!section) return
 
-    if (!('IntersectionObserver' in window)) {
-      setIsRevealed(true)
-      return
-    }
+  //   if (!('IntersectionObserver' in window)) {
+  //     setIsRevealed(true)
+  //     return
+  //   }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsRevealed(true)
-          observer.unobserve(section)
-        }
-      },
-      { threshold: 0.08 },
-    )
+  //   const observer = new IntersectionObserver(
+  //     ([entry]) => {
+  //       if (entry.isIntersecting) {
+  //         setIsRevealed(true)
+  //         observer.unobserve(section)
+  //       }
+  //     },
+  //     { threshold: 0.08 },
+  //   )
 
-    observer.observe(section)
+  //   observer.observe(section)
 
-    return () => observer.disconnect()
-  }, [])
+  //   return () => observer.disconnect()
+  // }, [])
+
+
+useEffect(() => {
+  const section = sectionRef.current
+  if (!section) return
+
+  // Safety fallback: reveal the section even if the
+  // browser doesn't trigger IntersectionObserver.
+  const fallback = window.setTimeout(() => {
+    setIsRevealed(true)
+  }, 2000)
+
+  if (!('IntersectionObserver' in window)) {
+    setIsRevealed(true)
+    window.clearTimeout(fallback)
+    return
+  }
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        setIsRevealed(true)
+        window.clearTimeout(fallback)
+        observer.unobserve(section)
+      }
+    },
+    { threshold: 0.08 },
+  )
+
+  observer.observe(section)
+
+  return () => {
+    observer.disconnect()
+    window.clearTimeout(fallback)
+  }
+}, [])
+
 
   return (
     <section

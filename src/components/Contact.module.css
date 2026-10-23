@@ -430,3 +430,17 @@
     transition: none;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .contactSection {
+    clip-path: none;
+    transition: none;
+  }
+
+  .contactArrow,
+  .buttonFill,
+  .buttonLabel,
+  .contactPill {
+    transition: none;
+  }
+}
