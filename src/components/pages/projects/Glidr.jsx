@@ -26,13 +26,20 @@ export default function Glidr() {
       </header>
 
       <section className={styles.intro}>
-        <p className={styles.eyebrow}>
-          Selected project / 01
-        </p>
 
         <h1 className={styles.title}>Glidr</h1>
 
         <div className={styles.details}>
+
+            <div className={styles.detail}>
+                <span className={styles.detailLabel}>
+                About project
+                </span>
+                <div className={styles.detailContent}>
+                Glidr simplify shopping experience from product discovery to checkout.
+                </div>
+            </div>
+
           <div className={styles.detail}>
             <span className={styles.detailLabel}>
               Role / Services
@@ -51,14 +58,6 @@ export default function Glidr() {
             </div>
           </div>
 
-          <div className={styles.detail}>
-            <span className={styles.detailLabel}>
-              Year
-            </span>
-            <div className={styles.detailContent}>
-              2025
-            </div>
-          </div>
         </div>
       </section>
 
