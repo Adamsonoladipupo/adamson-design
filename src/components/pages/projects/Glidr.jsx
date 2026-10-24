@@ -7,6 +7,7 @@ import Footer from "../../Footer";
 
 import glidrImage from "../../assets/glidr/glidr1.jpg";
 import saveliensImage from "../../assets/saveliens.png";
+import glidrVideo from "../../assets/glidr/glidr_landing_page.mp4";
 
 const LIVE_URL = "https://shop-with-glidr.onrender.com/";
 
@@ -94,6 +95,53 @@ export default function Glidr() {
           </a>
         </div>
       </section>
+
+      <section className={styles.problem} aria-labelledby="problem-title">
+        <div className={styles.problemHeader}>
+          <span className={styles.problemEyebrow}>01 / THE CHALLENGE</span>
+          <h2 id="problem-title" className={styles.problemTitle}>
+            The Problem<span>.</span>
+          </h2>
+        </div>
+
+        <div className={styles.problemContent}>
+          <span className={styles.problemMark} aria-hidden="true">
+            ↘
+          </span>
+
+          <p className={styles.problemText}>
+            Customers spend unnecessary time searching for products,
+            confirming product’s price, navigating unfamiliar store layouts,
+            and managing shopping lists, leading to a poor shopping
+            experience and reduced customer loyalty.
+          </p>
+        </div>
+      </section>
+
+
+      <section className={styles.videoSection} aria-label="Glidr landing page video">
+        <div className={styles.videoHeader}>
+          <span className={styles.videoEyebrow}>02 / THE EXPERIENCE</span>
+          <p className={styles.videoCaption}>
+            A closer look at Glidr<span>.</span>
+          </p>
+        </div>
+
+        <div className={styles.videoFrame}>
+          <video
+            className={styles.showcaseVideo}
+            src={glidrVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label="Glidr landing page experience"
+          />
+        </div>
+      </section>
+
+
 
       <section
         className={styles.nextProject}
