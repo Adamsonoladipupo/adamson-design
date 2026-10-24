@@ -8,6 +8,8 @@ import Footer from "../../Footer";
 import dashboardImage from "../../assets/saveliens/dashboard.png";
 import linksImage from "../../assets/saveliens/link.png";
 import saveliensImage from "../../assets/saveliens/saveliens1.png";
+import topicImage from "../../assets/saveliens/topic.png";
+import giftaraImage from "../../assets/giftara.png";
 import saveliensVideo from "../../assets/saveliens/saveliens_landing_page.mp4";
 
 const PROJECT_DETAILS = [
@@ -77,17 +79,18 @@ export default function Saveliens() {
         <div className={styles.heroFrame}>
           <img
             className={styles.heroImage}
-            src={dashboardImage}
-            alt="Saveliens dashboard showing organized topics and saved links"
+            src={saveliensImage}
+            alt="Saveliens product and brand preview"
           />
 
           <a
             className={styles.liveButton}
-            href="#project-overview"
-            aria-label="Explore the Saveliens project overview"
+            href="https://saveliens.onrender.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open the Saveliens live website in a new tab"
           >
-            <span>Explore</span>
-            <span>the project ↘</span>
+            <span>Live site ↗</span>
           </a>
         </div>
 
@@ -133,16 +136,18 @@ export default function Saveliens() {
           <video
             className={styles.showcaseVideo}
             src={saveliensVideo}
-            controls
+            autoPlay
+            muted
+            loop
             playsInline
-            preload="metadata"
+            preload="auto"
             aria-label="Saveliens product walkthrough"
           />
 
-          <div className={styles.videoBadge}>
+          {/* <div className={styles.videoBadge}>
             <span className={styles.videoDot} />
             <span>Product walkthrough</span>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -270,19 +275,20 @@ export default function Saveliens() {
         </div>
       </section>
 
-      {/* Supporting visual */}
-      <section className={styles.brandShowcase}>
-        <div className={styles.brandImageFrame}>
-          <img
-            src={saveliensImage}
-            alt="Saveliens brand visual"
-            loading="lazy"
-          />
-        </div>
-        <p className={styles.brandCaption}>
-          SAVELIENS — MAKING SPACE FOR THE THINGS WORTH SAVING
-        </p>
-      </section>
+    {/* Supporting topic visual */}
+    <section className={styles.brandShowcase}>
+    <div className={styles.brandImageFrame}>
+        <img
+        src={topicImage}
+        alt="Saveliens topic organization interface"
+        loading="lazy"
+        />
+    </div>
+
+    <p className={styles.brandCaption}>
+        SAVELIENS — ORGANIZE YOUR LINKS BY TOPIC
+    </p>
+    </section>
 
       {/* Reflection */}
       <section className={styles.reflection}>
@@ -309,22 +315,23 @@ export default function Saveliens() {
         onPointerEnter={() => setCursorVisible(true)}
         onPointerLeave={() => setCursorVisible(false)}
       >
-        <p className={styles.nextLabel}>Up next</p>
+        {/* <p className={styles.nextLabel}>Up next</p> */}
+        <p className={styles.nextLabel}>Up next · Product Design</p>
 
         <Link
-          className={styles.nextLink}
-          to="/work/glidr"
-          onFocus={() => setCursorVisible(false)}
+        className={styles.nextLink}
+        to="/work/giftara"
+        onFocus={() => setCursorVisible(false)}
         >
-          <h2 className={styles.nextTitle}>Glidr</h2>
+        <h2 className={styles.nextTitle}>Giftara</h2>
 
-          <div className={styles.nextPreview}>
+        <div className={styles.nextPreview}>
             <img
-              src={dashboardImage}
-              alt=""
-              loading="lazy"
+            src={giftaraImage}
+            alt="Giftara project preview"
+            loading="lazy"
             />
-          </div>
+        </div>
         </Link>
 
         <div
