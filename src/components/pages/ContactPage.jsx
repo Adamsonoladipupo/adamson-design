@@ -8,6 +8,8 @@ import profileImage from '../../components/assets/adamson.jpg'
 
 const CONTACT_EMAIL = 'adamsonoladipupo@gmail.com'
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const SOCIAL_LINKS = [
   {
     label: 'Behance',
