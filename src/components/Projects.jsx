@@ -23,7 +23,7 @@ const PROJECTS = [
     slug: 'saveliens',
     contribution: 'Product Design',
     industry: 'Lifestyle & E-commerce',
-    categories: ['Design'],
+    categories: ['Design', 'Development'],
     image: imgSaveliens,
   },
   {
@@ -39,7 +39,7 @@ const PROJECTS = [
     slug: 'swaply',
     contribution: 'UX/UI Design',
     industry: 'Fintech & Cryptocurrency',
-    categories: ['Design'],
+    categories: ['Design', 'Full Case Study'],
     image: imgSwaply,
   },
   {
@@ -47,12 +47,12 @@ const PROJECTS = [
     slug: 'ecoearn',
     contribution: 'Product Design',
     industry: 'Sustainability & Rewards',
-    categories: ['Design'],
+    categories: ['Design', 'Full Case Study'],
     image: imgEcoearn,
   },
 ]
 
-const FILTERS = ['All', 'Design', 'Development']
+const FILTERS = ['All', 'Design', 'Development', 'Full Case Study']
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('All')

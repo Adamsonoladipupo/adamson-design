@@ -5,7 +5,7 @@ import styles from "./Glidr.module.css";
 import Navbar from "../../Navbar";
 import Footer from "../../Footer";
 
-import glidrImage from "../../assets/glidr.png";
+import glidrImage from "../../assets/glidr/glidr1.jpg";
 import saveliensImage from "../../assets/saveliens.png";
 
 const LIVE_URL = "https://shop-with-glidr.onrender.com/";
@@ -36,7 +36,8 @@ export default function Glidr() {
 
   return (
     <main className={styles.page}>
-        <Navbar />
+      <Navbar />
+
       <section className={styles.intro}>
         <h1 className={styles.title}>Glidr</h1>
 
@@ -92,7 +93,6 @@ export default function Glidr() {
             <span aria-hidden="true">Live site ↗</span>
           </a>
         </div>
-
       </section>
 
       <section
@@ -102,48 +102,41 @@ export default function Glidr() {
         onMouseLeave={handleNextProjectLeave}
         aria-label="Next project: Saveliens"
       >
-        <div
-            
-        >
+        <div>
+          <p className={styles.nextLabel}>
+            Next project
+          </p>
 
-        
-                <p className={styles.nextLabel}>
-                Next project
-                </p>
+          <Link
+            to="/work/saveliens"
+            className={styles.nextLink}
+            aria-label="View the Saveliens project"
+          >
+            <h2 className={styles.nextTitle}>
+              Saveliens
+            </h2>
 
-                <Link
-                to="/work/saveliens"
-                className={styles.nextLink}
-                aria-label="View the Saveliens project"
-                >
-                <h2 className={styles.nextTitle}>
-                    Saveliens
-                </h2>
+            <div className={styles.nextPreview}>
+              <img
+                src={saveliensImage}
+                alt="Saveliens project preview"
+                loading="lazy"
+              />
+            </div>
+          </Link>
 
-                <div className={styles.nextPreview}>
-                    <img
-                    src={saveliensImage}
-                    alt="Saveliens project preview"
-                    loading="lazy"
-                    />
-                </div>
-                </Link>
-
-                
-
-                <div
-                className={`${styles.cursorView} ${
-                    cursor.visible ? styles.cursorViewVisible : ""
-                }`}
-                style={{
-                    left: `${cursor.x}px`,
-                    top: `${cursor.y}px`,
-                }}
-                aria-hidden="true"
-                >
-                <span>Next Project</span>
-                </div>
-
+          <div
+            className={`${styles.cursorView} ${
+              cursor.visible ? styles.cursorViewVisible : ""
+            }`}
+            style={{
+              left: `${cursor.x}px`,
+              top: `${cursor.y}px`,
+            }}
+            aria-hidden="true"
+          >
+            <span>Next Project</span>
+          </div>
         </div>
 
         <div className={styles.nextBottom}>
@@ -157,6 +150,7 @@ export default function Glidr() {
           </Link>
         </div>
       </section>
+
       <Footer />
     </main>
   );
