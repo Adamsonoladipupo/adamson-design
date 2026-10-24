@@ -7,6 +7,10 @@ import Navbar from "../../Navbar";
 import Footer from "../../Footer";
 
 import giftaraImage from "../../assets/giftara.png";
+import giftaraImage1 from "../../assets/giftara/Table-of-Content-29.png"
+import Marketplace from "../../assets/giftara/Marketplace.png"
+import Birthday_and_Celebration from "../../assets/giftara/Birthday_and_Celebration.png"
+import Wallet from "../../assets/giftara/Wallet.png"
 
 // ========================================
 // Project Content
@@ -14,16 +18,22 @@ import giftaraImage from "../../assets/giftara.png";
 
 const productScreens = [
   {
-    title: "Marketplace experience",
-    alt: "Giftara marketplace screen placeholder",
+    title: "Discover gifts",
+    alt: "Giftara marketplace screen showing available gift cards",
+    image: Marketplace,
+    className: "screenOne",
   },
   {
-    title: "Gift card categories",
-    alt: "Giftara category screen placeholder",
+    title: "Find the perfect gift",
+    alt: "Giftara gift card browsing screen",
+    image: Birthday_and_Celebration,
+    className: "screenTwo",
   },
   {
-    title: "Brand identity in context",
-    alt: "Giftara brand identity placeholder",
+    title: "Your gifting wallet",
+    alt: "Giftara wallet screen showing gift card management",
+    image: Wallet,
+    className: "screenThree",
   },
 ];
 
@@ -85,9 +95,6 @@ export default function Giftara() {
       ======================================== */}
 
       <section className={styles.intro}>
-        <p className={styles.eyebrow}>
-          Selected project · Product & Brand Design
-        </p>
 
         <h1 className={styles.title}>Giftara</h1>
 
@@ -138,7 +145,7 @@ export default function Giftara() {
         <div className={styles.heroFrame}>
           <img
             className={styles.heroImage}
-            src={giftaraImage}
+            src={giftaraImage1}
             alt="Giftara project cover placeholder"
           />
 
@@ -146,21 +153,18 @@ export default function Giftara() {
             className={styles.caseStudyButton}
             href="#full-case-study"
           >
-            <span>View case study</span>
+            <span>Case study </span>
 
             <span
               className={styles.buttonArrow}
               aria-hidden="true"
             >
-              ↘
+              
             </span>
           </a>
         </div>
 
         <div className={styles.projectCaption}>
-          <span>Giftara · Product & Brand Design</span>
-
-          <span>Mobile experience / Visual identity</span>
         </div>
       </section>
 
@@ -297,22 +301,22 @@ export default function Giftara() {
         {/* Product Design Visuals */}
 
         <div className={styles.visualGallery}>
-          {productScreens.map((screen) => (
-            <figure
-              className={styles.visualCard}
-              key={screen.title}
-            >
-              <div className={styles.visualImageFrame}>
-                <img
-                  src={giftaraImage}
-                  alt={screen.alt}
-                  loading="lazy"
-                />
-              </div>
+            {productScreens.map((screen) => (
+                <figure
+                className={`${styles.visualCard} ${styles[screen.className]}`}
+                key={screen.title}
+                >
+                <div className={styles.visualImageFrame}>
+                    <img
+                    src={screen.image}
+                    alt={screen.alt}
+                    loading="lazy"
+                    />
+                </div>
 
-              <figcaption>{screen.title}</figcaption>
-            </figure>
-          ))}
+                <figcaption>{screen.title}</figcaption>
+                </figure>
+            ))}
         </div>
 
         <p className={styles.placeholderNote}>
