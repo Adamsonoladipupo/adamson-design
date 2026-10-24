@@ -12,7 +12,7 @@ import AboutPage from './components/pages/AboutPage.jsx'
 import ProjectsPage from './components/pages/ProjectsPage.jsx'
 import ContactPage from './components/pages/ContactPage.jsx'
 import Glidr from './components/pages/projects/Glidr.jsx'
-import Saveliens from "./pages/work/Saveliens";
+import Saveliens from "./components/pages/projects/Saveliens.jsx";
 
 function applyTheme(isDark) {
   const root = document.documentElement

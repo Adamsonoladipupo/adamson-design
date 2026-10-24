@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "./saveliens.module.css";
+import styles from "./Saveliens.module.css";
 
 import Navbar from "../../Navbar";
 import Footer from "../../Footer";
 
-import dashboardImage from "../../assets/dashboard.png";
-import linksImage from "../../assets/link.png";
-import saveliensImage from "../../assets/saveliens1.png";
-import saveliensVideo from "../../assets/saveliens_landing_page.mp4";
+import dashboardImage from "../../assets/saveliens/dashboard.png";
+import linksImage from "../../assets/saveliens/link.png";
+import saveliensImage from "../../assets/saveliens/saveliens1.png";
+import saveliensVideo from "../../assets/saveliens/saveliens_landing_page.mp4";
 
 const PROJECT_DETAILS = [
   {
