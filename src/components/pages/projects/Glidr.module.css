@@ -446,14 +446,18 @@
   color: #8b8b80;
 }
 
+
 .videoFrame {
   position: relative;
   overflow: hidden;
   width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
   aspect-ratio: 16 / 9;
-  border-radius: 5px;
+  border-radius: 8px;
   background: #e4e2dc;
   isolation: isolate;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.07);
 }
 
 .showcaseVideo {
@@ -463,6 +467,7 @@
   object-fit: cover;
   object-position: center;
 }
+
 
 .videoBadge {
   position: absolute;
@@ -491,9 +496,10 @@
   box-shadow: 0 0 10px rgba(185, 230, 165, 0.5);
 }
 
+
 @media (max-width: 700px) {
   .videoSection {
-    padding: 65px 6% 78px;
+    padding: 60px 6% 75px;
   }
 
   .videoHeader {
@@ -504,7 +510,8 @@
   }
 
   .videoFrame {
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 16 / 9;
+    border-radius: 6px;
   }
 
   .videoBadge {
@@ -513,7 +520,43 @@
     padding: 9px 12px;
     font-size: 10px;
   }
+
+   .solution {
+    padding: 76px 6% 70px;
+  }
+
+  .solutionContent {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-top: 30px;
+  }
+
+  .solutionMark {
+    font-size: 30px;
+  }
+
+  .solutionText {
+    font-size: clamp(21px, 5.5vw, 28px);
+    line-height: 1.5;
+  }
+
+  .solutionGallery {
+    padding: 15px 6% 80px;
+  }
+
+  .solutionGalleryHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+
+  .solutionImageFrame {
+    aspect-ratio: 4 / 5;
+    border-radius: 6px;
+  }
 }
+
 
 
 /* Tablet and mobile */
@@ -601,6 +644,397 @@
   }
 }
 
+
+/* Solution section */
+.solution {
+  padding: 110px 7% 100px;
+  background: #f5f4f0;
+  color: #171717;
+}
+
+.solutionHeader {
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(23, 23, 23, 0.2);
+}
+
+.solutionEyebrow,
+.solutionGalleryEyebrow {
+  display: block;
+  margin-bottom: 24px;
+  color: #77766f;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.solutionTitle {
+  margin: 0;
+  font-size: clamp(44px, 7vw, 96px);
+  font-weight: 500;
+  letter-spacing: -0.075em;
+  line-height: 0.98;
+}
+
+.solutionTitle span {
+  color: #8b8b80;
+}
+
+.solutionContent {
+  display: grid;
+  grid-template-columns: 1fr 2.2fr;
+  gap: 40px;
+  padding-top: 42px;
+}
+
+.solutionMark {
+  color: #8b8b80;
+  font-size: 38px;
+  line-height: 1;
+}
+
+.solutionText {
+  max-width: 850px;
+  margin: 0;
+  font-size: clamp(21px, 2.5vw, 34px);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+/* Solution image showcase */
+.solutionGallery {
+  padding: 20px 7% 120px;
+  overflow: hidden;
+  background: #f5f4f0;
+  color: #171717;
+}
+
+.solutionGalleryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.solutionGalleryEyebrow {
+  margin: 0;
+}
+
+.solutionGalleryCaption {
+  margin: 0;
+  font-size: clamp(18px, 2.4vw, 30px);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+}
+
+.solutionGalleryCaption span {
+  color: #85847b;
+}
+
+.solutionImageFrame {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  background: #e4e2dc;
+  isolation: isolate;
+}
+
+/* Scroll-inspired image reveal */
+.solutionImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.08);
+  animation: solutionImageReveal linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 35%;
+}
+
+.solutionImageIndex {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  padding: 10px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  background: rgba(20, 20, 20, 0.55);
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+
+
+/* Insights section */
+.insights {
+  padding: clamp(80px, 12vw, 160px) 7%;
+  background: #f5f4f0;
+  color: #20201e;
+}
+
+.insightsHeader {
+  max-width: 1200px;
+  margin: 0 auto 64px;
+}
+
+.insightsEyebrow {
+  display: block;
+  margin-bottom: 24px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #77766f;
+}
+
+.insightsTitle {
+  margin: 0;
+  font-size: clamp(42px, 7vw, 96px);
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+  font-weight: 500;
+}
+
+.insightsTitle span {
+  color: #0bb9a6;
+}
+
+.insightsContent {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 760px);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 32px;
+  border-top: 1px solid rgba(32, 32, 30, 0.2);
+}
+
+.insightsMark {
+  font-size: 42px;
+  line-height: 1;
+  color: #0bb9a6;
+}
+
+.insightsBody {
+  max-width: 760px;
+}
+
+.insightsLead {
+  margin: 0 0 24px;
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+}
+
+.insightsText {
+  margin: 0 0 20px;
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.85;
+  color: #686760;
+}
+
+.insightsTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 36px;
+}
+
+.insightsTags span {
+  padding: 10px 15px;
+  border: 1px solid rgba(32, 32, 30, 0.2);
+  border-radius: 999px;
+  font-size: 12px;
+  color: #33332f;
+}
+
+
+/* Spacious showcase with a clean white background */
+.screensShowcase {
+  width: 100%;
+  padding: clamp(100px, 14vw, 190px) 7%;
+  overflow: hidden;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.screensRow {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+  gap: clamp(28px, 6vw, 90px);
+}
+
+.screenItem {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: screenLevitate 5.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.screenItem img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: 1px solid rgba(20, 20, 20, 0.045);
+  border-radius: 5px;
+
+  /* Sleek, subtle depth */
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.025),
+    0 12px 28px rgba(0, 0, 0, 0.07),
+    0 30px 60px rgba(0, 0, 0, 0.045);
+
+  transition: box-shadow 350ms ease;
+}
+
+/* Soft lift on hover */
+.screenItem:hover img {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.035),
+    0 18px 38px rgba(0, 0, 0, 0.09),
+    0 38px 75px rgba(0, 0, 0, 0.055);
+}
+
+/* Staggered floating motion */
+.screenOne {
+  animation-delay: 0s;
+}
+
+.screenTwo {
+  animation-delay: -1.8s;
+}
+
+.screenThree {
+  animation-delay: -3.6s;
+}
+
+@keyframes screenLevitate {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .screensShowcase {
+    padding: 100px 5%;
+  }
+
+  .screensRow {
+    gap: 24px;
+  }
+}
+
+/* Mobile: retain all three images on one row */
+@media (max-width: 480px) {
+  .screensShowcase {
+    padding: 80px 4%;
+  }
+
+  .screensRow {
+    gap: 12px;
+  }
+
+  .screenItem img {
+    border-radius: 4px;
+    box-shadow:
+      0 3px 8px rgba(0, 0, 0, 0.04),
+      0 12px 22px rgba(0, 0, 0, 0.07);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .screenItem {
+    animation: none;
+    will-change: auto;
+  }
+
+  .screenItem img {
+    transition: none;
+  }
+}
+
+
+
+
+
+
+/* Responsive layout */
+@media (max-width: 640px) {
+  .insights {
+    padding: 80px 6%;
+  }
+
+  .insightsHeader {
+    margin-bottom: 40px;
+  }
+
+  .insightsContent {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-top: 24px;
+  }
+
+  .insightsMark {
+    font-size: 32px;
+  }
+
+  .insightsText {
+    line-height: 1.75;
+  }
+
+  .insightsTags {
+    gap: 8px;
+  }
+
+  .insightsTags span {
+    padding: 9px 12px;
+    font-size: 11px;
+  }
+}
+
+
+@keyframes solutionImageReveal {
+  from {
+    transform: scale(1.08);
+    clip-path: inset(8% 5% 8% 5%);
+  }
+
+  to {
+    transform: scale(1);
+    clip-path: inset(0);
+  }
+}
+
+
+
+
 @media (hover: none), (pointer: coarse) {
   .nextProject {
     cursor: auto;
@@ -632,5 +1066,11 @@
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+    .solutionImage {
+    animation: none;
+    transform: none;
+    clip-path: none;
   }
 }

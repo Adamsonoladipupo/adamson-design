@@ -9,6 +9,12 @@ import glidrImage from "../../assets/glidr/glidr1.jpg";
 import saveliensImage from "../../assets/saveliens.png";
 import glidrVideo from "../../assets/glidr/glidr_landing_page.mp4";
 
+import glidrSolutionImage from "../../assets/glidr/glidr2.png";
+
+import splashImage from "../../assets/glidr/splash.png";
+import productDetailImage from "../../assets/glidr/product_detail.png";
+import homeImage from "../../assets/glidr/Home.png";
+
 const LIVE_URL = "https://shop-with-glidr.onrender.com/";
 
 export default function Glidr() {
@@ -98,7 +104,6 @@ export default function Glidr() {
 
       <section className={styles.problem} aria-labelledby="problem-title">
         <div className={styles.problemHeader}>
-          <span className={styles.problemEyebrow}>01 / THE CHALLENGE</span>
           <h2 id="problem-title" className={styles.problemTitle}>
             The Problem<span>.</span>
           </h2>
@@ -121,10 +126,6 @@ export default function Glidr() {
 
       <section className={styles.videoSection} aria-label="Glidr landing page video">
         <div className={styles.videoHeader}>
-          <span className={styles.videoEyebrow}>02 / THE EXPERIENCE</span>
-          <p className={styles.videoCaption}>
-            A closer look at Glidr<span>.</span>
-          </p>
         </div>
 
         <div className={styles.videoFrame}>
@@ -140,6 +141,112 @@ export default function Glidr() {
           />
         </div>
       </section>
+
+
+      <section className={styles.solution} aria-labelledby="solution-title">
+        <div className={styles.solutionHeader}>
+          <h2 id="solution-title" className={styles.solutionTitle}>
+            The Solution<span>.</span>
+          </h2>
+        </div>
+
+        <div className={styles.solutionContent}>
+          <span className={styles.solutionMark} aria-hidden="true">
+            ↗
+          </span>
+
+          <p className={styles.solutionText}>
+            A shopping companion that simplifies in-store grocery shopping
+            by enabling customers to discover products, locate them within
+            stores, manage shopping lists, and complete purchases efficiently.
+          </p>
+        </div>
+      </section>
+      
+
+      <section className={styles.solutionGallery} aria-label="Glidr solution showcase">
+        <div className={styles.solutionGalleryHeader}>
+        </div>
+
+        <div className={styles.solutionImageFrame}>
+          <img
+            src={glidrSolutionImage}
+            alt="Glidr shopping experience interface"
+            className={styles.solutionImage}
+            loading="lazy"
+          />
+        </div>
+      </section>
+
+
+      <section className={styles.insights} aria-labelledby="insights-title">
+        <div className={styles.insightsHeader}>
+          <h2 id="insights-title" className={styles.insightsTitle}>
+            Beyond online shopping<span>.</span>
+          </h2>
+        </div>
+
+        <div className={styles.insightsContent}>
+          <span className={styles.insightsMark} aria-hidden="true">
+            ↗
+          </span>
+
+          <div className={styles.insightsBody}>
+            <p className={styles.insightsLead}>
+              Rethinking the in-store shopping experience.
+            </p>
+
+            <p className={styles.insightsText}>
+              While most grocery apps optimize online ordering or delivery,
+              Glidr is built to transform the in-store shopping experience.
+              By combining intelligent product discovery, precise store
+              navigation, integrated shopping tools, and a platform tailored
+              to African retail, Glidr addresses a gap that existing
+              solutions largely leave unfilled.
+            </p>
+
+            <p className={styles.insightsText}>
+              By digitizing inventory across multiple retail categories,
+              Glidr enables shoppers to discover products in nearby stores
+              before choosing whether to buy in-store, reserve for pickup,
+              or request delivery.
+            </p>
+
+            <div className={styles.insightsTags}>
+              <span>Product discovery</span>
+              <span>Store navigation</span>
+              <span>Flexible fulfilment</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+      <section className={styles.screensShowcase}>
+        <div className={styles.screensRow}>
+          <div className={`${styles.screenItem} ${styles.screenOne}`}>
+            <img src={splashImage} alt="Glidr splash screen" loading="lazy" />
+          </div>
+
+          <div className={`${styles.screenItem} ${styles.screenTwo}`}>
+            <img src={homeImage} alt="Glidr home screen" loading="lazy" />
+          </div>
+
+          <div className={`${styles.screenItem} ${styles.screenThree}`}>
+            <img
+              src={productDetailImage}
+              alt="Glidr product detail screen"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+
 
 
 
