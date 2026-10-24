@@ -1,49 +1,42 @@
 
-import { Link } from 'react-router-dom'
-import styles from './Glidr.module.css'
+import { Link } from "react-router-dom";
+import styles from "./Glidr.module.css";
 
-import glidrImage from '../../assets/glidr.png'
-import saveliensImage from '../../assets/saveliens.png'
+import glidrImage from "../../assets/glidr.png";
+import saveliensImage from "../../assets/saveliens.png";
 
-const LIVE_URL = 'https://shop-with-glidr.onrender.com/'
+// Replace these example imports with your existing component paths.
+import Navbar from "../../Navbar";
+import Footer from "../../Footer";
+
+const LIVE_URL = "https://shop-with-glidr.onrender.com/";
 
 export default function Glidr() {
   return (
     <main className={styles.page}>
-      <header className={styles.header}>
-        <Link to="/" className={styles.logo}>
-          © Code by Adamson
-        </Link>
-
-        <nav
-          className={styles.navigation}
-          aria-label="Main navigation"
-        >
-          <Link to="/projects">Work</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
-        </nav>
-      </header>
+      {/* Shared site navbar */}
+      <Navbar />
 
       <section className={styles.intro}>
-
         <h1 className={styles.title}>Glidr</h1>
 
         <div className={styles.details}>
+          <div className={styles.detail}>
+            <span className={styles.detailLabel}>
+              About project
+            </span>
 
-            <div className={styles.detail}>
-                <span className={styles.detailLabel}>
-                About project
-                </span>
-                <div className={styles.detailContent}>
-                Glidr simplify shopping experience from product discovery to checkout.
-                </div>
+            <div className={styles.detailContent}>
+              Glidr simplifies the shopping experience from
+              product discovery to checkout.
             </div>
+          </div>
 
           <div className={styles.detail}>
             <span className={styles.detailLabel}>
               Role / Services
             </span>
+
             <div className={styles.detailContent}>
               Design &amp; Development
             </div>
@@ -53,11 +46,11 @@ export default function Glidr() {
             <span className={styles.detailLabel}>
               Project
             </span>
+
             <div className={styles.detailContent}>
               E-commerce experience
             </div>
           </div>
-
         </div>
       </section>
 
@@ -86,12 +79,11 @@ export default function Glidr() {
 
         <div className={styles.projectCaption}>
           <span>GLIDR</span>
-          <span>
-            Design &amp; Development · 2025
-          </span>
+          <span>Design &amp; Development · 2025</span>
         </div>
       </section>
 
+      {/* Keep the original project-to-project transition */}
       <section className={styles.nextProject}>
         <p className={styles.nextLabel}>
           Next project
@@ -130,6 +122,9 @@ export default function Glidr() {
           </Link>
         </div>
       </section>
+
+      {/* Shared site footer */}
+      <Footer />
     </main>
-  )
+  );
 }
