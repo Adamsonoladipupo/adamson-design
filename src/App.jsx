@@ -13,6 +13,7 @@ import ProjectsPage from './components/pages/ProjectsPage.jsx'
 import ContactPage from './components/pages/ContactPage.jsx'
 import Glidr from './components/pages/projects/Glidr.jsx'
 import Saveliens from "./components/pages/projects/Saveliens.jsx";
+import Giftara from "./components/pages/projects/Giftara.jsx";
 
 function applyTheme(isDark) {
   const root = document.documentElement
@@ -103,6 +104,11 @@ export default function App() {
           <Route 
             path="/work/saveliens" 
             element={<Saveliens />} 
+          />
+
+          <Route 
+            path="/work/giftara" 
+            element={<Giftara />} 
           />
 
           {/* Add more project routes as their pages are built. */}
