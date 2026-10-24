@@ -6,14 +6,12 @@ import Navbar from "../../Navbar";
 import Footer from "../../Footer";
 
 import glidrImage from "../../assets/glidr/glidr1.jpg";
-import saveliensImage from "../../assets/saveliens.png";
 import glidrVideo from "../../assets/glidr/glidr_landing_page.mp4";
-
 import glidrSolutionImage from "../../assets/glidr/glidr2.png";
-
 import splashImage from "../../assets/glidr/splash.png";
 import productDetailImage from "../../assets/glidr/product_detail.png";
 import homeImage from "../../assets/glidr/Home.png";
+import saveliensImage from "../../assets/saveliens.png";
 
 const LIVE_URL = "https://shop-with-glidr.onrender.com/";
 
@@ -50,28 +48,22 @@ export default function Glidr() {
 
         <div className={styles.details}>
           <div className={styles.detail}>
-            <span className={styles.detailLabel}>
-              About project
-            </span>
+            <span className={styles.detailLabel}>About project</span>
             <div className={styles.detailContent}>
-              Glidr simplifies the shopping experience from
-              product discovery to checkout.
+              Glidr simplifies the shopping experience from product
+              discovery to checkout.
             </div>
           </div>
 
           <div className={styles.detail}>
-            <span className={styles.detailLabel}>
-              Role / Services
-            </span>
+            <span className={styles.detailLabel}>Role / Services</span>
             <div className={styles.detailContent}>
               Design &amp; Development
             </div>
           </div>
 
           <div className={styles.detail}>
-            <span className={styles.detailLabel}>
-              Project
-            </span>
+            <span className={styles.detailLabel}>Project</span>
             <div className={styles.detailContent}>
               E-commerce experience
             </div>
@@ -102,7 +94,10 @@ export default function Glidr() {
         </div>
       </section>
 
-      <section className={styles.problem} aria-labelledby="problem-title">
+      <section
+        className={styles.problem}
+        aria-labelledby="problem-title"
+      >
         <div className={styles.problemHeader}>
           <h2 id="problem-title" className={styles.problemTitle}>
             The Problem<span>.</span>
@@ -123,11 +118,10 @@ export default function Glidr() {
         </div>
       </section>
 
-
-      <section className={styles.videoSection} aria-label="Glidr landing page video">
-        <div className={styles.videoHeader}>
-        </div>
-
+      <section
+        className={styles.videoSection}
+        aria-label="Glidr landing page video"
+      >
         <div className={styles.videoFrame}>
           <video
             className={styles.showcaseVideo}
@@ -142,8 +136,10 @@ export default function Glidr() {
         </div>
       </section>
 
-
-      <section className={styles.solution} aria-labelledby="solution-title">
+      <section
+        className={styles.solution}
+        aria-labelledby="solution-title"
+      >
         <div className={styles.solutionHeader}>
           <h2 id="solution-title" className={styles.solutionTitle}>
             The Solution<span>.</span>
@@ -162,12 +158,11 @@ export default function Glidr() {
           </p>
         </div>
       </section>
-      
 
-      <section className={styles.solutionGallery} aria-label="Glidr solution showcase">
-        <div className={styles.solutionGalleryHeader}>
-        </div>
-
+      <section
+        className={styles.solutionGallery}
+        aria-label="Glidr solution showcase"
+      >
         <div className={styles.solutionImageFrame}>
           <img
             src={glidrSolutionImage}
@@ -178,8 +173,10 @@ export default function Glidr() {
         </div>
       </section>
 
-
-      <section className={styles.insights} aria-labelledby="insights-title">
+      <section
+        className={styles.insights}
+        aria-labelledby="insights-title"
+      >
         <div className={styles.insightsHeader}>
           <h2 id="insights-title" className={styles.insightsTitle}>
             Beyond online shopping<span>.</span>
@@ -221,15 +218,25 @@ export default function Glidr() {
         </div>
       </section>
 
-      
-      <section className={styles.screensShowcase}>
+      <section
+        className={styles.screensShowcase}
+        aria-label="Glidr mobile app screens"
+      >
         <div className={styles.screensRow}>
           <div className={`${styles.screenItem} ${styles.screenOne}`}>
-            <img src={splashImage} alt="Glidr splash screen" loading="lazy" />
+            <img
+              src={splashImage}
+              alt="Glidr splash screen"
+              loading="lazy"
+            />
           </div>
 
           <div className={`${styles.screenItem} ${styles.screenTwo}`}>
-            <img src={homeImage} alt="Glidr home screen" loading="lazy" />
+            <img
+              src={homeImage}
+              alt="Glidr home screen"
+              loading="lazy"
+            />
           </div>
 
           <div className={`${styles.screenItem} ${styles.screenThree}`}>
@@ -242,14 +249,6 @@ export default function Glidr() {
         </div>
       </section>
 
-
-
-
-
-
-
-
-
       <section
         className={styles.nextProject}
         onMouseEnter={handleNextProjectMove}
@@ -258,18 +257,14 @@ export default function Glidr() {
         aria-label="Next project: Saveliens"
       >
         <div>
-          <p className={styles.nextLabel}>
-            Next project
-          </p>
+          <p className={styles.nextLabel}>Next project</p>
 
           <Link
             to="/work/saveliens"
             className={styles.nextLink}
             aria-label="View the Saveliens project"
           >
-            <h2 className={styles.nextTitle}>
-              Saveliens
-            </h2>
+            <h2 className={styles.nextTitle}>Saveliens</h2>
 
             <div className={styles.nextPreview}>
               <img
@@ -297,10 +292,7 @@ export default function Glidr() {
         <div className={styles.nextBottom}>
           <span className={styles.nextRule} />
 
-          <Link
-            to="/projects"
-            className={styles.allProjects}
-          >
+          <Link to="/projects" className={styles.allProjects}>
             All projects
           </Link>
         </div>

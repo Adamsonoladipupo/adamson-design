@@ -90,12 +90,32 @@ body {
   background-clip: text;
 }
 
+
+/* Hide scrollbar across the entire portfolio */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Legacy Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, newer Edge */
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+
 /* .transition-theme was removed — theme switching is instant via JS in App.jsx.
    Component-level hover/focus transitions are written inline where needed. */
 
 /* ══════════════════════════════════════════
    Animations
    ══════════════════════════════════════════ */
+
+
 
 /* Horizontal tool marquee (right → left) */
 @keyframes marquee {
